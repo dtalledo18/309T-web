@@ -1,0 +1,123 @@
+.section {
+    background-color: #ffffff;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Fondo decorativo (figuras en las esquinas) */
+.bgDecorLeft {
+    position: absolute;
+    left: -10%;
+    top: 10%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bgDecorRight {
+    position: absolute;
+    right: -5%;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.centerCol {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Estilo Base de las Cards (Glassmorphism) */
+.card {
+    background: rgba(33, 84, 227, 0.15); /* Color Brand Blue con opacidad */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(33, 84, 227, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card del 80% */
+.cardLarge {
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cardTag {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.4;
+}
+
+.statNumber {
+    font-size: 8rem;
+    font-weight: 800;
+    color: #2154E3; /* Azul sólido para el número */
+    letter-spacing: -0.05em;
+    margin: 20px 0;
+}
+
+.cardFooter {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Textos de las cards */
+.cardText {
+    font-size: 0.95rem;
+    color: #000;
+    line-height: 1.6;
+}
+
+.cardText strong {
+    font-weight: 600;
+}
+
+/* Card Derecha (Escudo) */
+.cardHigh {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.shieldIcon {
+    margin-bottom: 40px;
+}
+
+.cardTextCenter {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .cardLarge, .cardHigh {
+        min-height: 400px;
+    }
+}

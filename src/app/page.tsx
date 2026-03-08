@@ -4,10 +4,11 @@ import Header from '@/components/layout/Header';
 import Hero3D from '@/components/sections/Hero3D';
 import LateralScroll from '@/components/sections/LateralScroll';
 import Calculator from '@/components/sections/Calculator';
-import FAQ from '@/components/sections/FAQ';
+import FAQ from '@/components/sections/FAQ/FAQ';
 import Footer from '@/components/layout/Footer';
 import AboutUs from "@/components/sections/AboutUs";
 import VideoSection from "@/components/sections/VideoSection";
+import Metrics from "@/components/sections/Metrics/Metrics";
 
 export default function Home() {
     const theme = useStore((state) => state.theme);
@@ -21,6 +22,7 @@ export default function Home() {
                 <Calculator />
                 <VideoSection/>
                 <LateralScroll />
+                <Metrics/>
                 <FAQ />
             </main>
             <Footer />

@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/decor-blur-left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/decor-blur-right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/hvac-roof.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/icons/shield-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/union.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sections/Metrics/Metrics.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sections/Metrics/Metrics.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/FAQ.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" afterDir="false" />
     </list>
@@ -57,6 +67,7 @@
       <recent name="C:\Users\DIEGO\Desktop\309t-web\public\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\FAQ" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\layout" />
     </key>
   </component>
@@ -89,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772994225097</updated>
-      <workItem from="1772994227071" duration="10671000" />
+      <workItem from="1772994227071" duration="12347000" />
     </task>
     <servers />
   </component>

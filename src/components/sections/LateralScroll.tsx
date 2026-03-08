@@ -91,7 +91,7 @@ export default function LateralScroll() {
                 {CARDS.map((card, index) => (
                     <div
                         key={index}
-                        className={`${styles.card} ${index === 2 ? styles.cardAccent : ''}`}
+                        className={`${styles.card}`}
                     >
                         <div className={styles.cardIcon}>
                             <Image src={card.icon} alt={card.title} width={52} height={52} />
