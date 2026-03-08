@@ -5,19 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/decor-blur-left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/decor-blur-right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/hvac-roof.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icons/shield-blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/union.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sections/Metrics/Metrics.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sections/Metrics/Metrics.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/Footer/Footer.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/Footer/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/FAQ.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/AboutUs.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/AboutUs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Hero3D.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Hero3D.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/VideoSection.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/VideoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +71,11 @@
       <recent name="C:\Users\DIEGO\Desktop\309t-web\public\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\FAQ" />
-      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\layout" />
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\VideoSection" />
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\LateralScroll" />
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\Hero3D" />
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\Calculator" />
+      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\AboutUs" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -100,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772994225097</updated>
-      <workItem from="1772994227071" duration="12347000" />
+      <workItem from="1772994227071" duration="13185000" />
     </task>
     <servers />
   </component>

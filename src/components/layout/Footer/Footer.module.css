@@ -1,0 +1,129 @@
+.footer {
+    background-color: #1a202c; /* Bluegray scale/900 exacto */
+    padding: 80px 60px 40px 60px;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.topGrid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+/* Columna de Marca */
+.brandCol {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brandName {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.slogan {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Columnas de Navegación */
+.navCol h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+}
+
+.navCol ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.navCol li, .navCol a {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.navCol li:hover {
+    opacity: 1;
+}
+
+/* Barra Inferior y Botón */
+.bottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legal {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.legal a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.separator {
+    opacity: 0.3;
+}
+
+.waitlistBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.waitlistBtn:hover {
+    background: #ffffff;
+    color: #1a202c;
+    border-color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .topGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+    .bottomBar {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+}
