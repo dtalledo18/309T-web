@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="" />
+    <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772994225097</updated>
-      <workItem from="1772994227071" duration="8499000" />
+      <workItem from="1772994227071" duration="10671000" />
     </task>
     <servers />
   </component>

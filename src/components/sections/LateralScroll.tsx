@@ -36,22 +36,31 @@ export default function LateralScroll() {
 
         const pinContainer = pinContainerRef.current;
         const cardsTrack = cardsTrackRef.current;
-
         if (!pinContainer || !cardsTrack) return;
 
-        const getScrollAmount = () => {
-            const containerWidth = pinContainer.offsetWidth;
-            const trackWidth = cardsTrack.scrollWidth;
-            return trackWidth - containerWidth;
-        };
+        // ── Posición inicial ──────────────────────────────────────────────
+        // Queremos que solo la 1ra tarjeta sea visible.
+        // El track empieza en x = 0, pero debemos asegurarnos de que
+        // la 2da y 3ra tarjeta están fuera del overflow:hidden del container.
+        // Con overflow:hidden en pinContainer y el track en x:0,
+        // solo se verá lo que cabe dentro del ancho del container.
+        // La primera card tiene min-width: 100vw → ocupa toda la pantalla → listo.
+
+        // ── Posición final ────────────────────────────────────────────────
+        // Mover el track a la izquierda hasta que la última card quede visible.
+        const getFinalX = () => -(cardsTrack.scrollWidth - pinContainer.offsetWidth);
+
+        // ── ScrollTrigger ────────────────────────────────────────────────
+        // end = distancia total que recorre el track
+        const getTotalScroll = () => cardsTrack.scrollWidth - pinContainer.offsetWidth;
 
         gsap.to(cardsTrack, {
-            x: () => getScrollAmount(),
+            x: getFinalX,
             ease: "none",
             scrollTrigger: {
                 trigger: pinContainer,
                 start: "top top",
-                end: () => `+=${getScrollAmount()}`,
+                end: () => `+=${getTotalScroll()}`,
                 scrub: 1,
                 pin: true,
                 anticipatePin: 1,
@@ -62,52 +71,37 @@ export default function LateralScroll() {
     }, { scope: pinContainerRef });
 
     return (
-
         <section ref={pinContainerRef} className={styles.pinContainer}>
 
-            {/* Fondo decorativo */}
-            <div className={styles.flowerWrapper}>
-                <Image
-                    src="/flower-outline.png"
-                    alt=""
-                    fill
-                    className={styles.flowerImg}
-                />
+            {/* Título fijo en la parte izquierda — posición absoluta para no empujar el track */}
+            <div className={styles.introSide}>
+                <h2 className={styles.mainTitle}>
+                    THE <span className={styles.blueText}>309T</span><br />
+                    STANDARD
+                </h2>
             </div>
 
-            <div className={styles.contentWrapper}>
+            {/* Flor decorativa */}
+            <div className={styles.flowerWrapper}>
+                <Image src="/flower-outline.png" alt="" fill className={styles.flowerImg} />
+            </div>
 
-                {/* Título */}
-                <div className={styles.introSide}>
-                    <h2 className={styles.mainTitle}>
-                        THE <span className={styles.blueText}>309T</span><br />
-                        STANDARD
-                    </h2>
-                </div>
-
-                {/* Track horizontal */}
-                <div ref={cardsTrackRef} className={styles.cardsTrack}>
-                    {CARDS.map((card, index) => (
-                        <div key={index} className={styles.card}>
-
-                            <div className={styles.cardIcon}>
-                                <Image
-                                    src={card.icon}
-                                    alt={card.title}
-                                    width={48}
-                                    height={48}
-                                />
-                            </div>
-
-                            <div className={styles.cardContent}>
-                                <h3>{card.title}</h3>
-                                <p>{card.desc}</p>
-                            </div>
-
+            {/* Track: empieza en x:0, primera card llena el viewport */}
+            <div ref={cardsTrackRef} className={styles.cardsTrack}>
+                {CARDS.map((card, index) => (
+                    <div
+                        key={index}
+                        className={`${styles.card} ${index === 2 ? styles.cardAccent : ''}`}
+                    >
+                        <div className={styles.cardIcon}>
+                            <Image src={card.icon} alt={card.title} width={52} height={52} />
                         </div>
-                    ))}
-                </div>
-
+                        <div className={styles.cardContent}>
+                            <h3>{card.title}</h3>
+                            <p>{card.desc}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
 
         </section>
