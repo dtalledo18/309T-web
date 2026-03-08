@@ -1,0 +1,42 @@
+.section {
+    background-color: #ffffff;
+    padding: 120px 24px;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    max-width: 1100px;
+    text-align: center;
+}
+
+.description {
+    color: #334155;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+}
+
+.devicesImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.05));
+}
+
+.imageWrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}

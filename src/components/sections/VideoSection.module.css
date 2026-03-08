@@ -1,0 +1,77 @@
+.section {
+    background-color: #ffffff; /* Mantiene el flujo de About Us */
+    padding: 80px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+}
+
+.videoWrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 32px;
+    overflow: hidden; /* Corta la imagen y el brillo del botón */
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.videoImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.videoWrapper:hover .videoImage {
+    transform: scale(1.005);
+}
+
+/* El Botón "Glass" de iOS */
+.playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    z-index: 10;
+}
+
+.glassCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1); /* Muy sutil */
+
+    /* Efecto de desenfoque crítico */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.playText {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación al pasar el mouse */
+.videoWrapper:hover .glassCircle {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
