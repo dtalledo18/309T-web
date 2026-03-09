@@ -1,19 +1,39 @@
 'use client';
 import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useEffect } from 'react';
 import {
     OrbitControls,
     Stage,
     PerspectiveCamera,
     ContactShadows,
-    useGLTF
+    useGLTF,
+    useAnimations
 } from '@react-three/drei';
 import styles from './Hero3D.module.css';
+import {Canvas} from "@react-three/fiber";
 
 // Sub-componente para cargar el modelo GLB
 function HVACModel() {
-    // Carga el archivo desde public/models/hvac.glb
-    const { scene } = useGLTF('/models/HVAC-texture.glb');
+    // 1. Cargamos el modelo
+    const { scene, animations } = useGLTF('/models/HVAC-animated.glb');
+
+    // 2. Extraemos las animaciones y las vinculamos a la escena
+    const { actions } = useAnimations(animations, scene);
+
+    useEffect(() => {
+        // 3. Reproducimos la primera animación disponible
+        // Si conoces el nombre de la animación (ej: "Scene"), usa actions["Scene"]?.play();
+        const firstAction = Object.values(actions)[0];
+
+        if (firstAction) {
+            firstAction.reset().fadeIn(0.5).play();
+        }
+
+        // Limpieza al desmontar
+        return () => {
+            firstAction?.fadeOut(0.5);
+        };
+    }, [actions]);
 
     return (
         <primitive
@@ -80,4 +100,4 @@ export default function Hero3D() {
 }
 
 // Pre-carga el modelo para evitar tirones visuales
-useGLTF.preload('/models/hvac.glb');
+useGLTF.preload('/models/HVAC-animated.glb');

@@ -26,6 +26,13 @@ export default function AboutUs() {
     return (
         <section ref={container} className={styles.section} id="about">
             <div className={styles.content}>
+                <div className={styles.flowerWrapper}>
+                    <img
+                        src="/flower-outline-alt.png"
+                        alt=""
+                        className={styles.flowerImg}
+                    />
+                </div>
 
                 <p className={styles.description}>
                     <strong>309T</strong> leverages custom end to end AI/ML models to scan and detect HVAC damage with surgical precision. We transform weeks of manual paperwork into Audit-Ready technical reports in minutes that supports your expertise, using verified equipment databases to provide a single source of truth for both technicians and insurance carriers. Engineered for the field, tested in the extremes of Chicago.
@@ -35,8 +42,8 @@ export default function AboutUs() {
                     <Image
                         src="/devices-mockup.png"
                         alt="309T Interface on Laptop, Tablet and Mobile"
-                        width={1200} // Ajusta según el tamaño original de tu PNG
-                        height={800}
+                        width={1400} // Ajusta según el tamaño original de tu PNG
+                        height={1000}
                         priority={false} // Se carga solo cuando el usuario hace scroll hacia abajo
                         className={styles.devicesImg}
                     />

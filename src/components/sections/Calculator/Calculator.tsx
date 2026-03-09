@@ -44,7 +44,7 @@ export default function Calculator() {
 
                 <h2 className={styles.title}>Discover your potential savings</h2>
                 <p className={styles.subtitle}>
-                    Cut reporting time, <strong>improve</strong> team productivity, and gain better control over your HVAC operations.
+                    Cut reporting time, improve team productivity, and gain better control over your HVAC operations.
                 </p>
 
                 <div className={styles.calcGrid}>

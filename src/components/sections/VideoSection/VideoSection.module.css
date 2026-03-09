@@ -1,6 +1,6 @@
 .section {
     background-color: #ffffff; /* Mantiene el flujo de About Us */
-    padding: 80px 24px;
+    padding: 150px 24px 150px 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,6 @@
     position: relative;
     width: 100%;
     border-radius: 32px;
-    /* overflow: hidden;  ← ELIMINA ESTA LÍNEA */
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
