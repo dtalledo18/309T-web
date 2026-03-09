@@ -11,34 +11,23 @@ import Metrics from "@/components/sections/Metrics/Metrics";
 
 export default function Home() {
     return (
-        /*
-          id="color-root"
-          - GSAP anima backgroundColor de este div directamente
-          - NO uses clases Tailwind de color aquí (bg-white, bg-slate-950, etc.)
-            porque Tailwind sobreescribiría los estilos inline de GSAP
-          - Color inicial: #ffffff (blanco = Hero + AboutUs)
-        */
-        <div id="color-root" style={{ backgroundColor: '#ffffff' }}>
+        <>
+            {/* Header FUERA del color-root para que su backdrop-filter
+                vea el contenido real de la página detrás */}
             <Header />
-            <main>
-                <Hero3D />
-                <AboutUs />
 
-                {/*
-                  Calculator tiene el useColorSwitch.
-                  Cuando su TOP cruza el CENTER del viewport,
-                  TODO el #color-root cambia a #353c4c suavemente.
-                  Esto hace que AboutUs (que ya pasó) y Calculator
-                  (que está entrando) se vean ambas en el color oscuro.
-                */}
-                <Calculator />
-
-                <VideoSection />
-                <LateralScroll />
-                <Metrics />
-                <FAQ />
-            </main>
-            <Footer />
-        </div>
+            <div id="color-root" style={{ backgroundColor: '#ffffff' }}>
+                <main>
+                    <Hero3D />
+                    <AboutUs />
+                    <Calculator />
+                    <VideoSection />
+                    <LateralScroll />
+                    <Metrics />
+                    <FAQ />
+                </main>
+                <Footer />
+            </div>
+        </>
     );
 }

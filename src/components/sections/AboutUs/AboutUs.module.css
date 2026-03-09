@@ -1,6 +1,6 @@
 .section {
     background-color: transparent;
-    padding: 120px 24px 500px 24px;
+    padding: 120px 24px 120px 24px;
     overflow: hidden;
     min-height: 100vh;
     display: flex;
@@ -18,7 +18,7 @@
     font-size: 1.4rem;
     line-height: 1.6;
     max-width: 900px;
-    margin: 0 auto 60px auto;
+    margin: 300px auto 60px auto;
 }
 
 .imageContainer {

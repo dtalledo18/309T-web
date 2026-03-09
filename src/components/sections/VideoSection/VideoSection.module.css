@@ -15,7 +15,7 @@
     position: relative;
     width: 100%;
     border-radius: 32px;
-    overflow: hidden; /* Corta la imagen y el brillo del botón */
+    /* overflow: hidden;  ← ELIMINA ESTA LÍNEA */
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
@@ -24,6 +24,7 @@
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 32px; /* ← aquí en vez del wrapper */
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -47,12 +48,9 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1); /* Muy sutil */
-
-    /* Efecto de desenfoque crítico */
-    backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(255, 255, 255, 0.3);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
-
+    backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;

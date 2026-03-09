@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/useColorSwitch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/models/hvac.glb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header/Header.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Hero3D/Hero3D.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +23,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3Afqy4VtgZya7n6sOmE0vOXMJqN" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,19 +46,20 @@
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Users/DIEGO/Desktop/309t-web/public",
+    "last_opened_file_path": "C:/Projects/309T-web/public/models",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Next.js: server-side.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\DIEGO\\Desktop\\309t-web\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Projects\\309T-web\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\309T-web\public\models" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\public" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\public\icons" />
     </key>
@@ -85,7 +89,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.143" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -97,6 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772994225097</updated>
       <workItem from="1772994227071" duration="18700000" />
+      <workItem from="1773065284159" duration="8282000" />
     </task>
     <servers />
   </component>
