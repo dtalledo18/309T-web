@@ -1,6 +1,6 @@
 .section {
-    background-color: #ffffff;
-    padding: 120px 24px;
+    background-color: transparent;
+    padding: 120px 24px 500px 24px;
     overflow: hidden;
     min-height: 100vh;
     display: flex;

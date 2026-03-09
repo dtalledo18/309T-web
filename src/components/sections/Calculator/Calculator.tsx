@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef } from 'react';
-import { useScrollColor } from '@/hooks/useScrollColor';
+import { useColorSwitch } from '@/hooks/useColorSwitch';
 import styles from './Calculator.module.css';
 
 export default function Calculator() {
@@ -8,8 +8,13 @@ export default function Calculator() {
     const [hours, setHours] = useState(8);
     const [rate, setRate] = useState(70);
 
-    // De blanco → oscuro al entrar a Calculator
-    useScrollColor(sectionRef, '#0f172a', '#ffffff');
+    /*
+      El trigger se dispara cuando el TOP de Calculator
+      llega al CENTER del viewport.
+      En ese momento TODA la página (id="color-root") cambia a #353c4c,
+      lo que incluye AboutUs y Calculator simultáneamente.
+    */
+    useColorSwitch(sectionRef, '#252f4a', '#ffffff', 'top center');
 
     const savings = (hours * rate * 7.5).toFixed(0);
 
