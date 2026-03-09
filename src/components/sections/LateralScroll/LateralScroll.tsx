@@ -38,20 +38,10 @@ export default function LateralScroll() {
         const cardsTrack = cardsTrackRef.current;
         if (!pinContainer || !cardsTrack) return;
 
-        // ── Posición inicial ──────────────────────────────────────────────
-        // Queremos que solo la 1ra tarjeta sea visible.
-        // El track empieza en x = 0, pero debemos asegurarnos de que
-        // la 2da y 3ra tarjeta están fuera del overflow:hidden del container.
-        // Con overflow:hidden en pinContainer y el track en x:0,
-        // solo se verá lo que cabe dentro del ancho del container.
-        // La primera card tiene min-width: 100vw → ocupa toda la pantalla → listo.
-
         // ── Posición final ────────────────────────────────────────────────
-        // Mover el track a la izquierda hasta que la última card quede visible.
         const getFinalX = () => -(cardsTrack.scrollWidth - pinContainer.offsetWidth);
 
         // ── ScrollTrigger ────────────────────────────────────────────────
-        // end = distancia total que recorre el track
         const getTotalScroll = () => cardsTrack.scrollWidth - pinContainer.offsetWidth;
 
         gsap.to(cardsTrack, {
@@ -94,7 +84,15 @@ export default function LateralScroll() {
                         className={`${styles.card}`}
                     >
                         <div className={styles.cardIcon}>
-                            <Image src={card.icon} alt={card.title} width={52} height={52} />
+                            <div className={styles.iconRelativeContainer}>
+                                <Image
+                                    src={card.icon}
+                                    alt={card.title}
+                                    fill
+                                    sizes="(max-width: 768px) 10vw, 5vw"
+                                    className={styles.iconImage}
+                                />
+                            </div>
                         </div>
                         <div className={styles.cardContent}>
                             <h3>{card.title}</h3>

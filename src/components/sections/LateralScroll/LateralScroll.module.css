@@ -6,7 +6,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background: #f0f2f5;
+    background: #ffffff;
     display: flex;
     align-items: center;       /* centra verticalmente el track */
 }
@@ -19,8 +19,8 @@
     left: 6vw;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
     pointer-events: none;
+    z-index: 5;
 }
 
 .mainTitle {
@@ -46,9 +46,8 @@
     transform: translateY(-50%);
     width: 700px;
     height: 700px;
-    opacity: 0.15;
     pointer-events: none;
-    z-index: 1;
+    z-index: 1; /* Capa base */
 }
 
 .flowerImg {
@@ -71,10 +70,11 @@
     gap: 24px;
     will-change: transform;
     height: 100%;
+    z-index: 20;
 }
 
 /* ======================================================
-   CARD — 60vw × 80vh, redondeada, con margen vertical auto
+   CARD
 ====================================================== */
 .card {
     min-width: 60vw;
@@ -83,11 +83,10 @@
 
     background: #1e293b;
     border-radius: 28px;
-    padding: 48px 52px;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
     flex-shrink: 0;
 
@@ -95,6 +94,8 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    z-index: 100;
 }
 
 .card:hover {
@@ -106,25 +107,40 @@
    CARD ICON
 ====================================================== */
 .cardIcon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, #36405F 0%, #4B5675 100%);
     display: flex;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
     align-items: center;
     justify-content: center;
     align-self: flex-start;
+}
+
+.iconRelativeContainer {
+    position: relative;
+    width: 35%;
+    height: 35%;
+    margin: auto;
+}
+
+.iconImage {
+    /* Mantiene la proporción del icono sin deformarlo */
+    object-fit: contain;
 }
 
 /* ======================================================
    CARD CONTENT
 ====================================================== */
 .cardContent {
+    height: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-content: start;
     gap: 20px;
-    max-width: 520px;
+    padding: 48px 52px;
 }
 
 .cardContent h3 {
