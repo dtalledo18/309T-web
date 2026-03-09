@@ -13,7 +13,7 @@ import styles from './Hero3D.module.css';
 // Sub-componente para cargar el modelo GLB
 function HVACModel() {
     // Carga el archivo desde public/models/hvac.glb
-    const { scene } = useGLTF('/models/hvac.glb');
+    const { scene } = useGLTF('/models/HVAC-texture.glb');
 
     return (
         <primitive
