@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100%;
     /* Gradiente radial más oscuro para resaltar el modelo 3D */
-    background: radial-gradient(circle at center, #1e2323 0%, #0a0c0c 100%);
+    background: radial-gradient(circle at center, #2B383B 0%, #111719 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
