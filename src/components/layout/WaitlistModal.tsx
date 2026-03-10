@@ -11,27 +11,31 @@ export default function WaitlistModal() {
         <div className={styles.overlay} onClick={closeWaitlist}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                 <header className={styles.header}>
-                    <h2>Join the Waitlist</h2>
-                    <button className={styles.closeBtn} onClick={closeWaitlist}>×</button>
+                    <h2 className={styles.title}>Join the Waitlist</h2>
+                    <button className={styles.closeBtn} onClick={closeWaitlist}>✕</button>
                 </header>
 
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
                     <div className={styles.row}>
-                        <input type="text" placeholder="First name" required />
-                        <input type="text" placeholder="Last name" required />
+                        <input type="text" placeholder="First name" className={styles.input} />
+                        <input type="text" placeholder="Last name" className={styles.input} />
                     </div>
-                    <input type="email" placeholder="Email" required />
-                    <select required>
+                    <input type="email" placeholder="Email" className={styles.input} />
+                    <select className={styles.select}>
                         <option value="">Professional role</option>
                         <option value="technician">Technician</option>
-                        <option value="manager">HVAC Manager</option>
+                        <option value="owner">Company Owner</option>
                     </select>
-                    <input type="text" placeholder="Company (optional)" />
-                    <textarea placeholder="Tell us why you're interested in beta-test access." rows={4}></textarea>
+                    <input type="text" placeholder="Company (optional)" className={styles.input} />
+                    <textarea
+                        placeholder="Tell us why you're interested in beta-test access."
+                        className={styles.textarea}
+                        rows={4}
+                    ></textarea>
 
-                    <label className={styles.checkbox}>
+                    <label className={styles.checkboxContainer}>
                         <input type="checkbox" />
-                        <span>Subscribe to be notified when new slots become available.</span>
+                        <span className={styles.checkboxText}>Subscribe to be notified when new slots become available.</span>
                     </label>
 
                     <button type="submit" className={styles.submitBtn}>

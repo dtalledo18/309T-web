@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import styles from './FAQ.module.css';
+import { useWaitlist} from "@/components/context/WaitlistContext";
 
 const FAQ_DATA = [
     {
@@ -22,6 +23,7 @@ const FAQ_DATA = [
 ];
 
 export default function FAQ() {
+    const { openWaitlist } = useWaitlist(); // Extraemos la función
     return (
         <section className={styles.section}>
             {/* Imagen decorativa de fondo (Flor/Unión) */}
@@ -60,7 +62,7 @@ export default function FAQ() {
                             The industry is moving to <span className={styles.blueText}>AI-driven workflows</span>.
                             Don’t miss a thing!
                         </p>
-                        <button className={styles.waitlistBtn}>
+                        <button className={styles.waitlistBtn} onClick={openWaitlist}>
                             Join the Waitlist
                         </button>
                     </div>

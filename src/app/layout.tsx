@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";// 1. Importa el Provider y el Modal
 import { WaitlistProvider} from "@/components/context/WaitlistContext";
 import WaitlistModal from "@/components/layout/WaitlistModal";
-import WaitlistWidget from "@/components/layout/WaitlistWidget/WaitlistWidget";
 
 
 const geistSans = Geist({
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WaitlistProvider>
             {children}
             <WaitlistModal />
-            <WaitlistWidget /> {/* <-- El widget flotante ahora es global */}
         </WaitlistProvider>
         </body>
         </html>
