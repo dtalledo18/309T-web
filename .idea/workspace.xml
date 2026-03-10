@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/video.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/AboutUs/AboutUs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/VideoSection/VideoSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/ai.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/estimator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icons/reports.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/LateralScroll/LateralScroll.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <updated>1772994225097</updated>
       <workItem from="1772994227071" duration="18700000" />
       <workItem from="1773065284159" duration="10070000" />
-      <workItem from="1773165327141" duration="9706000" />
+      <workItem from="1773165327141" duration="13033000" />
     </task>
     <servers />
   </component>
