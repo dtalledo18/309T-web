@@ -10,7 +10,7 @@ export default function AboutUs() {
     const imgWrapperRef = useRef(null);
 
     useGSAP(() => {
-        // Animación sutil de entrada al hacer scroll
+        // Entrada inicial
         gsap.from(imgWrapperRef.current, {
             y: 60,
             opacity: 0,
@@ -21,6 +21,22 @@ export default function AboutUs() {
                 start: "top 70%",
             }
         });
+
+        // Efecto de scale-down al hacer scroll
+        gsap.fromTo(
+            imgWrapperRef.current,
+            { scale: 1.15 },
+            {
+                scale: 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: container.current,
+                    start: "top 60%",   // empieza cuando la sección entra al viewport
+                    end: "center center", // termina cuando el centro de la sección llega al centro de la pantalla
+                    scrub: 1.5,          // suaviza el seguimiento del scroll
+                }
+            }
+        );
     }, { scope: container });
 
     return (

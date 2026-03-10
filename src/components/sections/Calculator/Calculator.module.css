@@ -64,7 +64,7 @@
 .title {
     color: #DFFF00; /* Lima del mockup */
     font-size: clamp(2.5rem, 5vw, 3.8rem);
-    font-weight: 800;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 16px;
     letter-spacing: -0.03em;

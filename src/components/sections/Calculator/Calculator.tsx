@@ -42,7 +42,7 @@ export default function Calculator() {
                     </div>
                 </div>
 
-                <h2 className={styles.title}>Discover your potential savings</h2>
+                <h2 className={styles.title}>Lost Revenue calculator</h2>
                 <p className={styles.subtitle}>
                     Cut reporting time, improve team productivity, and gain better control over your HVAC operations.
                 </p>
