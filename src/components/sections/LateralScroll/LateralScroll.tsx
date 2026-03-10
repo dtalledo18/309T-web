@@ -66,8 +66,8 @@ export default function LateralScroll() {
             {/* Título fijo en la parte izquierda — posición absoluta para no empujar el track */}
             <div className={styles.introSide}>
                 <h2 className={styles.mainTitle}>
-                    THE <span className={styles.blueText}>309T</span><br />
-                    STANDARD
+                    <span className={styles.blueText}>309T</span><br />
+                    FEATURES
                 </h2>
             </div>
 

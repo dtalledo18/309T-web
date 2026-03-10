@@ -7,10 +7,10 @@ export default function Metrics() {
         <section className={styles.section}>
             {/* Elementos decorativos de fondo */}
             <div className={styles.bgDecorLeft}>
-                <Image src="/decor-blur-left.png" alt="" width={500} height={500} />
+                <Image src="/decor-blur-left.png" alt="" width={200} height={200} />
             </div>
             <div className={styles.bgDecorRight}>
-                <Image src="/decor-blur-right.png" alt="" width={500} height={500} />
+                <Image src="/decor-blur-right.png" alt="" width={300} height={300} />
             </div>
 
             <div className={styles.container}>

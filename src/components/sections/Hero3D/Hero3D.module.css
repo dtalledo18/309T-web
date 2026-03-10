@@ -1,8 +1,7 @@
 .hero {
     height: 100vh;
     width: 100%;
-    /* Gradiente radial más oscuro para resaltar el modelo 3D */
-    background: radial-gradient(circle at center, #2B383B 0%, #111719 100%);
+    background: radial-gradient(circle at center, #252f4a 0%, #131825 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,12 +10,47 @@
     overflow: hidden;
 }
 
+/* HUMO CAPA 1 */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: url("https://www.transparenttextures.com/patterns/clouds.png");
+    opacity: 0.15;
+    filter: blur(80px);
+    animation: smoke1 60s linear infinite;
+    z-index: 1;
+}
+
+/* HUMO CAPA 2 */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: url("https://www.transparenttextures.com/patterns/cloudy.png");
+    opacity: 0.2;
+    filter: blur(100px);
+    animation: smoke2 90s linear infinite;
+    z-index: 1;
+}
+
 .textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
     z-index: 10;
-    max-width: 800px;
-    margin-bottom: 2rem;
+    max-width: 1500px;
     pointer-events: none; /* Permite que el mouse interactúe con el 3D por detrás */
+    height: 100%;
+    margin: 130px 0 50px 0;
+}
+.textContent div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 /* Permitir que el botón sí sea clickeable */
@@ -25,18 +59,36 @@
 }
 
 .title {
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 800;
+    font-size: 5rem;
+    font-weight: normal;
     color: #fff;
     line-height: 1.1;
     letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+    color: #fff;
     margin-top: 1.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@keyframes smokeMove1 {
+    0% {
+        transform: translate(-5%, -5%) scale(1);
+    }
+    100% {
+        transform: translate(5%, 5%) scale(1.2);
+    }
+}
+
+@keyframes smokeMove2 {
+    0% {
+        transform: translate(5%, -5%) scale(1);
+    }
+    100% {
+        transform: translate(-5%, 5%) scale(1.3);
+    }
 }

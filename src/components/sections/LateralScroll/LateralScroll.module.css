@@ -25,9 +25,9 @@
 
 .mainTitle {
     font-size: 4.8rem;
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.05;
-    color: #0f172a;
+    color: #070b13;
     letter-spacing: -0.03em;
     text-transform: uppercase;
 }
@@ -41,7 +41,7 @@
 ====================================================== */
 .flowerWrapper {
     position: absolute;
-    left: -170px;
+    left: -180px;
     top: 32%;
     transform: translateY(-40%);
     width: 1000px;
