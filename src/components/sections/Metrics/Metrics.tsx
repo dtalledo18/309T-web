@@ -46,7 +46,7 @@ export default function Metrics() {
                     {/* Tarjeta Derecha con Escudo */}
                     <div className={`${styles.card} ${styles.cardHigh}`}>
                         <div className={styles.shieldIcon}>
-                            <Image src="/icons/shield-blue.png" alt="Shield" width={120} height={120} />
+                            <Image src="/icons/shield.png" alt="Shield" width={120} height={120} />
                         </div>
                         <p className={styles.cardTextCenter}>
                             <strong>Clarity speeds up claims with Audit-Ready Reports.</strong>
