@@ -5,17 +5,21 @@ import styles from './VideoSection.module.css';
 export default function VideoSection() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
-    const togglePlay = () => {
+    const handleToggle = (e?: React.MouseEvent) => {
+        if (e) e.stopPropagation();
         const video = videoRef.current;
         if (!video) return;
 
-        if (isPlaying) {
-            video.pause();
-            setIsPlaying(false);
-        } else {
+        if (video.paused) {
             video.play();
             setIsPlaying(true);
+            // Al dar play, forzamos que el hover se "resetee" visualmente
+            setIsHovered(false);
+        } else {
+            video.pause();
+            setIsPlaying(false);
         }
     };
 
@@ -24,7 +28,9 @@ export default function VideoSection() {
             <div className={styles.container}>
                 <div
                     className={`${styles.videoWrapper} ${isPlaying ? styles.playing : ''}`}
-                    onClick={togglePlay}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    onClick={() => handleToggle()}
                 >
                     <video
                         ref={videoRef}
@@ -34,25 +40,33 @@ export default function VideoSection() {
                         className={styles.videoImage}
                     />
 
-                    <div className={styles.overlay} />
+                    <div className={styles.overlay} style={{ opacity: isPlaying ? 0 : 1 }} />
 
-                    <button
-                        className={styles.playButton}
-                        onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-                    >
-                        <div className={styles.glassCircle}>
-                            {isPlaying ? (
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                                    <rect x="6" y="4" width="4" height="16" rx="1"/>
-                                    <rect x="14" y="4" width="4" height="16" rx="1"/>
-                                </svg>
-                            ) : (
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                                    <polygon points="6,3 20,12 6,21"/>
-                                </svg>
-                            )}
-                        </div>
-                    </button>
+                    {/* INYECCIÓN DINÁMICA:
+                        Si está pausado, el botón EXISTE.
+                        Si está reproduciendo, SOLO EXISTE si el mouse está encima.
+                    */}
+                    {(!isPlaying || isHovered) && (
+                        <button
+                            className={styles.playButton}
+                            onClick={(e) => handleToggle(e)}
+                        >
+                            <div className={styles.glassCircle}>
+                                {isPlaying ? (
+                                    /* Icono Pausa */
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <rect x="6" y="4" width="4" height="16" rx="1"/>
+                                        <rect x="14" y="4" width="4" height="16" rx="1"/>
+                                    </svg>
+                                ) : (
+                                    /* Icono Play */
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <polygon points="6,3 20,12 6,21"/>
+                                    </svg>
+                                )}
+                            </div>
+                        </button>
+                    )}
                 </div>
             </div>
         </section>

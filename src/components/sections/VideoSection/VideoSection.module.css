@@ -24,29 +24,17 @@
     height: auto;
     display: block;
     border-radius: 32px;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.videoWrapper:hover .videoImage {
-    transform: scale(1.005);
-}
-
-/* Overlay oscuro — visible cuando pausado, oculto cuando playing */
 .overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.25);
     border-radius: 32px;
     transition: opacity 0.4s ease;
-    opacity: 1;
     pointer-events: none;
 }
 
-.playing .overlay {
-    opacity: 0;
-}
-
-/* Botón — siempre visible cuando pausado, solo en hover cuando playing */
 .playButton {
     position: absolute;
     top: 50%;
@@ -54,18 +42,14 @@
     transform: translate(-50%, -50%);
     border: none;
     background: transparent;
-    padding: 0;
     z-index: 10;
-    opacity: 1;
-    transition: opacity 0.3s ease;
+    /* Animación rápida para que la "inyección" se sienta fluida */
+    animation: fadeIn 0.2s ease-out;
 }
 
-.playing .playButton {
-    opacity: 0;
-}
-
-.playing:hover .playButton {
-    opacity: 1;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .glassCircle {
@@ -73,17 +57,10 @@
     height: 80px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
     backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.playButton:hover .glassCircle {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.35);
 }
