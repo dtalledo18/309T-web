@@ -5,8 +5,18 @@ body {
   /* Dejamos el fondo vacío inicialmente o un color base limpio */
   background-color: #ffffff;
   color: #171717;
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--font-public-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
   transition: color 0.5s ease; /* Suaviza el cambio de texto */
+}
+
+h1, h2 {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700; /* O el peso que prefieras */
+}
+
+h3, h4, h5, h6, p, span, button, input, textarea, select {
+  font-family: var(--font-public-sans), sans-serif;
 }
 
 html, body {

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow, Public_Sans } from "next/font/google";
 import "./globals.css";// 1. Importa el Provider y el Modal
 import { WaitlistProvider} from "@/components/context/WaitlistContext";
-import WaitlistModal from "@/components/layout/WaitlistModal";
+import WaitlistModal from "@/components/layout/WaitlistModal/WaitlistModal";
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const barlow = Barlow({
+    subsets: ["latin"],
+    weight: ["600", "700", "800"], // Pesos para títulos
+    variable: "--font-barlow",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const publicSans = Public_Sans({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-public-sans",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${barlow.variable} ${publicSans.variable} antialiased`}>
         <WaitlistProvider>
             {children}
             <WaitlistModal />

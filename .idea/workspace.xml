@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/WaitlistModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/WaitlistModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistWidget/WaitlistWidget.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistWidget/WaitlistWidget.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/WaitlistModal/WaitlistModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/WaitlistModal/WaitlistModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Calculator/Calculator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/FAQ/FAQ.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,28 +33,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "C:/Projects/309T-web/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "ts.external.directory.path": "C:\\Projects\\309T-web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/309T-web/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Projects\\309T-web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\309T-web\public" />
@@ -65,11 +63,11 @@
       <recent name="C:\Users\DIEGO\Desktop\309t-web\public\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\309T-web\src\components\layout\WaitlistModal" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\VideoSection" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\LateralScroll" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\Hero3D" />
       <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\Calculator" />
-      <recent name="C:\Users\DIEGO\Desktop\309t-web\src\components\sections\AboutUs" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -103,7 +101,8 @@
       <updated>1772994225097</updated>
       <workItem from="1772994227071" duration="18700000" />
       <workItem from="1773065284159" duration="10070000" />
-      <workItem from="1773165327141" duration="14714000" />
+      <workItem from="1773165327141" duration="15254000" />
+      <workItem from="1773237400413" duration="2315000" />
     </task>
     <servers />
   </component>

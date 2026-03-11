@@ -9,7 +9,7 @@
 }
 
 .glassCard {
-    background: rgba(53, 60, 76, 0.85);
+    background: rgba(71, 87, 96, 0.85);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -25,18 +25,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid white;
     padding-bottom: 50px;
     margin-bottom: 50px;
 }
 
 .col {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
 .col h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 20px;
     color: #ffffff;
@@ -56,9 +57,23 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    color: white;
     line-height: 1.5;
+}
+
+.iconCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    color: rgba(37, 45, 50, 0.9);
 }
 
 .successList li {
@@ -89,11 +104,12 @@
 
 .subtitle {
     text-align: center;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.1rem;
-    max-width: 75%;
+    color: #E0E9EF;
+    font-size: 1.3rem;
+    max-width: 100%;
     margin: 0 auto 50px auto;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 /* ── Calc Grid ── */
@@ -126,7 +142,7 @@
     display: block;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #64748b;
+    color: black;
     margin-bottom: 4px;
 }
 
@@ -158,7 +174,7 @@
 /* ── Result Display ── */
 .resultDisplay {
     background: rgba(0, 0, 0, 0.2);
-    border: 2px solid #3b82f6;
+    border: 2px solid #CCFF00;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
@@ -179,14 +195,15 @@
 }
 
 .amount span {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 200;
+    font-family: var(--font-barlow), sans-serif; /* Aplicamos la fuente de títulos */
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.45);
 }
 
 .resultDisplay p {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: white;
     margin-top: 14px;
 }
 
@@ -195,12 +212,12 @@
     margin-top: 40px;
     text-align: center;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: white;
     line-height: 2;
 }
 
 .footerInfo strong {
-    color: rgba(255, 255, 255, 0.8);
+    color: #D0DFFB;
     font-weight: 600;
 }
 

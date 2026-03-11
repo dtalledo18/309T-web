@@ -19,21 +19,46 @@ export default function Calculator() {
             <div className={styles.glassCard}>
                 <div className={styles.processHeader}>
                     <div className={styles.col}>
-                        <h3>Old Process</h3>
-                        <ul>
-                            <li><span className={styles.iconBad}>✖</span> 10+ days to finalize a claim report.</li>
-                            <li><span className={styles.iconBad}>✖</span> Estimates based on "gut feeling".</li>
-                            <li><span className={styles.iconBad}>✖</span> Back and forth disputes with carriers.</li>
-                            <li><span className={styles.iconBad}>✖</span> Late nights of data entry at home.</li>
+                        <h3 className={styles.title}>Old Process</h3>
+                        <ul className={styles.list}>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                10+ days to finalize a claim report.
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                Estimates based on "gut feeling".
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                Back and forth disputes with carriers.
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                Late nights of data entry at home.
+                            </li>
                         </ul>
                     </div>
+
                     <div className={styles.col}>
-                        <h3>309T Process</h3>
-                        <ul className={styles.successList}>
-                            <li><span className={styles.iconGood}>✔</span> 5 minutes from scan to export.</li>
-                            <li><span className={styles.iconGood}>✔</span> Math-backed logic with database.</li>
-                            <li><span className={styles.iconGood}>✔</span> Audit-Ready transparency.</li>
-                            <li><span className={styles.iconGood}>✔</span> Work is done before you leave the field.</li>
+                        <h3 className={styles.title}>309T Process</h3>
+                        <ul className={styles.list}>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                5 minutes from scan to export.
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                Math-backed logic with database.
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                Audit-Ready transparency.
+                            </li>
+                            <li>
+                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                Work is done before you leave the field.
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +120,7 @@ export default function Calculator() {
                 </div>
 
                 <div className={styles.footerInfo}>
-                    <span>( <strong>Reports</strong> per month × <strong>Hours</strong> per report ) × <strong>Hourly cost</strong> per service</span>
+                    <span>( Reports <strong>per month</strong> × Hours<strong>per report</strong> ) × Hourly cost<strong> per service</strong></span>
                     <br />
                     <span>*Estimation made considering 5 minute per report.</span>
                 </div>
