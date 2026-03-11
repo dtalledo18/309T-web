@@ -11,66 +11,73 @@ export default function Calculator() {
 
     useColorSwitch(sectionRef, '#252f4a', '#ffffff', 'top center');
 
-    // Fórmula: (Reports × Hours per report) × Hourly cost
-    const savings = (reportVolume * hoursPerReport * hourlyCost).toLocaleString('en-US');
+    // Nueva Fórmula: (A * C * B) - (A * D * B)
+    // A = Monthly report volume (reportVolume)
+    // B = Hourly cost per report (hourlyCost)
+    // C = Hours per report (hoursPerReport)
+    // D = 309T Reporting Time (0.084)
+    const D = 0.084;
+    const oldProcessCost = reportVolume * hoursPerReport * hourlyCost;
+    const newProcessCost = reportVolume * D * hourlyCost;
+
+    const savings = Math.max(0, Math.floor(oldProcessCost - newProcessCost)).toLocaleString('en-US');
 
     return (
         <section ref={sectionRef} className={styles.container}>
             <div className={styles.glassCard}>
                 <div className={styles.processHeader}>
                     <div className={styles.col}>
-                        <h3 className={styles.title}>Old Process</h3>
+                        <h3 className={styles.titleSmall}>Old Process</h3>
                         <ul className={styles.list}>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                <span className={`${styles.iconCircle}`}>✕</span>
                                 10+ days to finalize a claim report.
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                <span className={`${styles.iconCircle}`}>✕</span>
                                 Estimates based on "gut feeling".
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                <span className={`${styles.iconCircle}`}>✕</span>
                                 Back and forth disputes with carriers.
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgBad}`}>✕</span>
+                                <span className={`${styles.iconCircle}`}>✕</span>
                                 Late nights of data entry at home.
                             </li>
                         </ul>
                     </div>
 
                     <div className={styles.col}>
-                        <h3 className={styles.title}>309T Process</h3>
+                        <h3 className={styles.titleSmall}>309T Process</h3>
                         <ul className={styles.list}>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                <span className={`${styles.iconCircle}`}>✓</span>
                                 5 minutes from scan to export.
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                <span className={`${styles.iconCircle}`}>✓</span>
                                 Math-backed logic with database.
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                <span className={`${styles.iconCircle}`}>✓</span>
                                 Audit-Ready transparency.
                             </li>
                             <li>
-                                <span className={`${styles.iconCircle} ${styles.bgGood}`}>✓</span>
+                                <span className={`${styles.iconCircle}`}>✓</span>
                                 Work is done before you leave the field.
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <h2 className={styles.title}>Lost Revenue calculator</h2>
+                <h2 className={styles.title}>Savings calculator</h2>
                 <p className={styles.subtitle}>
                     Cut reporting time, <strong>improve</strong> team productivity, and gain better control over your HVAC operations.
                 </p>
 
                 <div className={styles.calcGrid}>
                     <div className={styles.inputs}>
-                        {/* Input A — Monthly Report Volume */}
                         <div className={styles.inputBox}>
                             <label>Monthly Report Volume</label>
                             <div className={styles.inputRow}>
@@ -82,7 +89,6 @@ export default function Calculator() {
                             </div>
                         </div>
 
-                        {/* Input B — Hourly cost per Report */}
                         <div className={styles.inputBox}>
                             <label>Hourly cost per Report</label>
                             <div className={styles.inputRow}>
@@ -95,7 +101,6 @@ export default function Calculator() {
                             </div>
                         </div>
 
-                        {/* Input C — Hours per Report */}
                         <div className={styles.inputBox}>
                             <label>Hours per Report</label>
                             <div className={styles.inputRow}>
@@ -109,7 +114,6 @@ export default function Calculator() {
                         </div>
                     </div>
 
-                    {/* Result Display D */}
                     <div className={styles.resultDisplay}>
                         <div className={styles.amount}>
                             {savings}
@@ -120,9 +124,9 @@ export default function Calculator() {
                 </div>
 
                 <div className={styles.footerInfo}>
-                    <span>( Reports <strong>per month</strong> × Hours<strong>per report</strong> ) × Hourly cost<strong> per service</strong></span>
+                    <span>Operation = (A × C × B) − (A × D × B)</span>
                     <br />
-                    <span>*Estimation made considering 5 minute per report.</span>
+                    <span>A = Monthly report volume  B = Hourly cost per report  C = Hours per report  D = 309T Reporting Time (5min = 0.084)</span>
                 </div>
             </div>
         </section>
