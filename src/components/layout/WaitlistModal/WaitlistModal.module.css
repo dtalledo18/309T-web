@@ -123,9 +123,10 @@
     background: white;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
     padding: 6px;
-    z-index: 9999; /* era: 100 */
+    z-index: 9999;
+    max-height: 284px; /* ~6 items de 46px cada uno */
+    overflow-y: auto;
 }
 
 .dropdownItem {

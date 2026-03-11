@@ -50,6 +50,8 @@ export default function WaitlistModal() {
                         <input type="text" placeholder="Last name" className={styles.input} required />
                     </div>
 
+                    <input type="email" placeholder="Email" className={styles.input} required />
+
                     {/* Custom Dropdown */}
                     <div className={styles.dropdownWrapper} ref={dropdownRef}>
                         <button
@@ -89,8 +91,6 @@ export default function WaitlistModal() {
                             </div>
                         )}
                     </div>
-
-                    <input type="email" placeholder="Email" className={styles.input} required />
 
                     <input type="text" placeholder="Company (optional)" className={styles.input} />
                     <textarea
