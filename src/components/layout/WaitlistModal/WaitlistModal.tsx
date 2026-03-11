@@ -1,11 +1,40 @@
 'use client';
+import { useState, useRef, useEffect } from 'react';
 import { useWaitlist } from "@/components/context/WaitlistContext";
 import styles from './WaitlistModal.module.css';
 
+const ROLES = [
+    { value: 'appraiser', label: 'Appraiser' },
+    { value: 'hvac_contractor', label: 'HVAC Contractor' },
+    { value: 'general_contractor', label: 'General Contractor' },
+    { value: 'insurance_adjuster', label: 'Insurance Adjuster' },
+    { value: 'home_inspector', label: 'Home inspector' },
+    { value: 'architect', label: 'Architect' },
+    { value: 'licensed_engineer', label: 'Licensed Engineer' },
+    { value: 'consultant', label: 'Consultant' },
+    { value: 'other', label: 'Other' },
+];
+
 export default function WaitlistModal() {
     const { isOpen, closeWaitlist } = useWaitlist();
+    const [selectedRole, setSelectedRole] = useState<string | null>(null);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    // Cierra al hacer click fuera
+    useEffect(() => {
+        const handler = (e: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, []);
 
     if (!isOpen) return null;
+
+    const selectedLabel = ROLES.find(r => r.value === selectedRole)?.label;
 
     return (
         <div className={styles.toastContainer}>
@@ -21,23 +50,49 @@ export default function WaitlistModal() {
                         <input type="text" placeholder="Last name" className={styles.input} required />
                     </div>
 
+                    {/* Custom Dropdown */}
+                    <div className={styles.dropdownWrapper} ref={dropdownRef}>
+                        <button
+                            type="button"
+                            className={`${styles.dropdownTrigger} ${!selectedLabel ? styles.placeholder : ''}`}
+                            onClick={() => setDropdownOpen(o => !o)}
+                        >
+                            {selectedLabel || 'Professional role'}
+                            <svg
+                                className={`${styles.dropdownArrow} ${dropdownOpen ? styles.dropdownArrowOpen : ''}`}
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        {dropdownOpen && (
+                            <div className={styles.dropdownMenu}>
+                                {ROLES.map(role => (
+                                    <button
+                                        key={role.value}
+                                        type="button"
+                                        className={`${styles.dropdownItem} ${selectedRole === role.value ? styles.dropdownItemActive : ''}`}
+                                        onClick={() => {
+                                            setSelectedRole(role.value);
+                                            setDropdownOpen(false);
+                                        }}
+                                    >
+                                        {role.label}
+                                        {selectedRole === role.value && (
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.checkIcon}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
                     <input type="email" placeholder="Email" className={styles.input} required />
 
-                    <select className={styles.select} required defaultValue="">
-                        <option value="" disabled hidden>Professional role</option>
-                        <option value="hvac_contractor">HVAC Contractor</option>
-                        <option value="general_contractor">General Contractor</option>
-                        <option value="insurance_adjuster">Insurance Adjuster</option>
-                        <option value="home_inspector">Home Inspector</option>
-                        <option value="appraiser">Appraiser</option>
-                        <option value="architect">Architect</option>
-                        <option value="licensed_engineer">Licensed Engineer</option>
-                        <option value="consultant">Consultant</option>
-                        <option value="other">Other</option>
-                    </select>
-
                     <input type="text" placeholder="Company (optional)" className={styles.input} />
-
                     <textarea
                         placeholder="Tell us why you're interested in beta-test access."
                         className={styles.textarea}
@@ -51,7 +106,6 @@ export default function WaitlistModal() {
                         </span>
                     </label>
 
-                    {/* Simulación de reCAPTCHA */}
                     <div className={styles.captchaBox}>
                         <div className={styles.captchaLeft}>
                             <input type="checkbox" id="robot" className={styles.captchaCheck} />
@@ -64,9 +118,7 @@ export default function WaitlistModal() {
                         </div>
                     </div>
 
-                    <button type="submit" className={styles.submitBtn}>
-                        Join the Waitlist
-                    </button>
+                    <button type="submit" className={styles.submitBtn}>Join the Waitlist</button>
                 </form>
             </div>
         </div>
