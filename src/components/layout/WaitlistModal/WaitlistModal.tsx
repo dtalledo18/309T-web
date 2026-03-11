@@ -25,9 +25,15 @@ export default function WaitlistModal() {
 
                     <select className={styles.select} required defaultValue="">
                         <option value="" disabled hidden>Professional role</option>
-                        <option value="technician">Technician</option>
-                        <option value="owner">Company Owner</option>
-                        <option value="contractor">Contractor</option>
+                        <option value="hvac_contractor">HVAC Contractor</option>
+                        <option value="general_contractor">General Contractor</option>
+                        <option value="insurance_adjuster">Insurance Adjuster</option>
+                        <option value="home_inspector">Home Inspector</option>
+                        <option value="appraiser">Appraiser</option>
+                        <option value="architect">Architect</option>
+                        <option value="licensed_engineer">Licensed Engineer</option>
+                        <option value="consultant">Consultant</option>
+                        <option value="other">Other</option>
                     </select>
 
                     <input type="text" placeholder="Company (optional)" className={styles.input} />
