@@ -43,13 +43,12 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     padding: 30px 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease;
 }
 
 .faqCard:hover {
     transform: translateY(-2px);
-    border-color: rgba(33, 84, 227, 0.2);
 }
 
 .question {
