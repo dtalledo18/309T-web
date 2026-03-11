@@ -13,7 +13,8 @@
     left: 6vw;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none;z-index: 1;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .mainTitle {
@@ -36,7 +37,8 @@
     width: 1000px;
     height: 1000px;
     pointer-events: none;
-    position: absolute;z-index: 0;
+    position: absolute;
+    z-index: 0;
 }
 
 .flowerImg {
@@ -52,7 +54,8 @@
     padding-right: calc((100vw - 30vw) / 2);
 
     height: 100%;
-    will-change: transform;z-index: 1;
+    will-change: transform;
+    z-index: 1;
 }
 
 .card {

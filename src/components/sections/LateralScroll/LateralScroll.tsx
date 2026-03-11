@@ -39,15 +39,10 @@ export default function LateralScroll() {
         const getScrollAmount = () => {
             const trackWidth = cardsTrack.scrollWidth;
             const viewportWidth = window.innerWidth;
-
             const cards = cardsTrack.querySelectorAll(`.${styles.card}`);
             const lastCard = cards[cards.length - 1] as HTMLElement;
-
-            const lastCardCenter =
-                lastCard.offsetLeft + lastCard.offsetWidth / 2;
-
+            const lastCardCenter = lastCard.offsetLeft + lastCard.offsetWidth / 2;
             const viewportCenter = viewportWidth / 2;
-
             return lastCardCenter - viewportCenter;
         };
 
@@ -58,12 +53,19 @@ export default function LateralScroll() {
             ease: "none",
             scrollTrigger: {
                 trigger: pinContainer,
-                start: "top top",
-                end: "+=" + scrollAmount,
+                // CAMBIO CLAVE 1: "top center" hace que el pin ocurra cuando
+                // la sección llega al centro de la pantalla, no arriba del todo.
+                // Si quieres que sea arriba pero sin saltos, usa "top top".
+                start: "center center",
+                end: () => `+=${scrollAmount}`,
                 scrub: 1,
                 pin: true,
-                anticipatePin: 1,
+                // CAMBIO CLAVE 2: Ajustamos anticipatePin.
+                // Valores más altos (como 1.5) ayudan a evitar el parpadeo en móviles y scrolls rápidos.
+                anticipatePin: 1.5,
                 invalidateOnRefresh: true,
+                // CAMBIO CLAVE 3: Marcadores para que veas dónde empieza y termina (quítalo luego)
+                // markers: true,
             }
         });
 
