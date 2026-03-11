@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
-    width: 500px;
+    width: 480px;
     z-index: 10000;
     animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
