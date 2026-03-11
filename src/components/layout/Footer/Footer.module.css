@@ -1,5 +1,5 @@
 .footer {
-    background-color: #1a202c; /* Bluegray scale/900 exacto */
+    background-color: #252F4A; /* Bluegray scale/900 exacto */
     padding: 80px 60px 40px 60px;
     color: #ffffff;
 }
@@ -38,7 +38,6 @@
 .slogan {
     font-size: 1.25rem;
     line-height: 1.4;
-    opacity: 0.9;
     font-weight: 500;
 }
 
@@ -47,7 +46,7 @@
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 28px;
-    color: rgba(255, 255, 255, 0.7);
+    color: #C4D5F9;
     letter-spacing: 0.05em;
 }
 
@@ -62,7 +61,6 @@
 
 .navCol li, .navCol a {
     font-size: 0.95rem;
-    opacity: 0.8;
     transition: opacity 0.2s;
     cursor: pointer;
 }
@@ -85,7 +83,7 @@
     align-items: center;
     gap: 20px;
     font-size: 0.9rem;
-    opacity: 0.6;
+    color: #C4D5F9;
 }
 
 .legal a {
