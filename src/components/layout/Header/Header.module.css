@@ -5,47 +5,108 @@
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    height: 60px;
+    height: 72px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+
+    padding: 0 28px;
+
     background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.12) 100%
+            rgba(255,255,255,0.1),
+            rgba(255,255,255,0.12)
     );
-    -webkit-backdrop-filter: blur(12px) saturate(180%);backdrop-filter: blur(12px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.2),
-            0 8px 32px rgba(0, 0, 0, 0.05);
 
-    border-radius: 40px;
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    backdrop-filter: blur(12px) saturate(180%);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 50px;
+
+    transition:
+            width 0.5s cubic-bezier(.22,1,.36,1),
+            height 0.5s cubic-bezier(.22,1,.36,1),
+            padding 0.5s cubic-bezier(.22,1,.36,1),
+            border-radius 0.5s cubic-bezier(.22,1,.36,1),
+            background 0.5s ease;
+
     z-index: 1000;
 }
 
-.logo { width: 32px; height: 32px; }
-
-.nav {
-    display: flex;
-    gap: 60px;
+.rightSide{
+    display:flex;
+    align-items:center;
+    gap:40px;
 }
 
-.nav a {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    transition: opacity 0.3s;
+/* Estado normal: logo blanco */
+.logo {
+    width: 34px;
+    height: 34px;
+    /* Mantenemos el transform suave, pero el filter lo hacemos tipo "pop" */
+    transition:
+            transform .7s cubic-bezier(.22,1,.36,1),
+            filter 0.2s ease-in-out;
+    transform: rotate(0deg);
+    filter: brightness(0) invert(1); /* Blanco puro */
 }
 
-.nav a:hover { opacity: 1; }
+/* Estado compact: giro y cambio de color controlado */
+.compact .logo {
+    /* Aplicamos el filtro azul con un pequeño retraso para que cambie
+       justo cuando el logo está a mitad de camino del giro */
+    transition-delay: 0.25s;
 
-.btnWaitlist {
-    background: #DFFF00; /* Color lima del mockup */
-    color: #000;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 13px;
+    filter: brightness(0) saturate(100%) invert(28%) sepia(71%) saturate(2156%) hue-rotate(213deg) brightness(89%) contrast(100%);
+    transform: rotate(360deg);
+}
+
+.nav{
+    display:flex;
+    gap:60px;
+    transition: opacity .35s ease, transform .35s ease;
+}
+
+.nav a{
+    color:white;
+    font-size:15px;
+    font-weight:500;
+}
+
+.btnWaitlist{
+    background:#DFFF00;
+    color:#000;
+    padding:10px 22px;
+    border-radius:22px;
+    font-weight:700;
+    font-size:13px;
+    cursor: pointer;
+}
+.compact{
+
+    width:320px;
+    height:64px;
+
+    padding:0 18px;
+
+    background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.1),
+            rgba(255,255,255,0.12)
+    );
+
+    border:1px solid rgba(0,0,0,0.08);
+
+    box-shadow:
+            0 10px 40px rgba(0,0,0,0.08);
+
+}
+
+.compact .nav{
+    opacity:0;
+    transform:translateY(-10px);
+    pointer-events:none;
 }
