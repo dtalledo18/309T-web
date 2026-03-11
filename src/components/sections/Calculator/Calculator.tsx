@@ -80,36 +80,39 @@ export default function Calculator() {
                     <div className={styles.inputs}>
                         <div className={styles.inputBox}>
                             <label>Monthly Report Volume</label>
-                            <div className={styles.inputRow}>
+                            <div className={styles.inputFieldWrapper}>
                                 <input
                                     type="number"
                                     value={reportVolume}
                                     onChange={(e) => setReportVolume(Number(e.target.value))}
+                                    className={styles.mainInput}
                                 />
                             </div>
                         </div>
 
                         <div className={styles.inputBox}>
                             <label>Hourly cost per Report</label>
-                            <div className={styles.inputRow}>
+                            <div className={styles.inputFieldWrapper}>
                                 <input
                                     type="number"
                                     value={hourlyCost}
                                     onChange={(e) => setHourlyCost(Number(e.target.value))}
+                                    className={styles.mainInput}
                                 />
-                                <span className={styles.unit}>USD</span>
+                                <span className={styles.suffix}>USD</span>
                             </div>
                         </div>
 
                         <div className={styles.inputBox}>
                             <label>Hours per Report</label>
-                            <div className={styles.inputRow}>
+                            <div className={styles.inputFieldWrapper}>
                                 <input
                                     type="number"
                                     value={hoursPerReport}
                                     onChange={(e) => setHoursPerReport(Number(e.target.value))}
+                                    className={styles.mainInput}
                                 />
-                                <span className={styles.unit}>Hours</span>
+                                <span className={styles.suffix}>Hours</span>
                             </div>
                         </div>
                     </div>
