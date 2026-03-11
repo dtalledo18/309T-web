@@ -2,138 +2,188 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background: #ffffff;
+    background: #ffffff; /* Fondo blanco para la parte de abajo */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    overflow: hidden;
 }
 
-.introSide {
-    position: absolute;
-    left: 6vw;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 1;
+/* Encabezado Oscuro (30%) */
+.darkHeader {
+    height: 35vh; /* Ajustable a 30-35% */
+    background-color: #252F4A; /* El color de tu diseño previo */
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 6vw;
+    z-index: 2;
+}
+
+.headerContent {
+    z-index: 3;
 }
 
 .mainTitle {
-    font-size: 4.8rem;
-    font-weight: 700;
-    line-height: 1.05;
-    color: #0f172a;
-    letter-spacing: -0.03em;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
 .blueText {
-    color: #2563eb;
+    color: #C4D5F9;
 }
 
-.flowerWrapper {
-    left: -180px;
-    top: 32%;
-    transform: translateY(-40%);
-    width: 1000px;
-    height: 1000px;
-    pointer-events: none;
-    position: absolute;
-    z-index: 0;
-}
-
-.flowerImg {
-    object-fit: contain;
+/* Area de Cards (70%) */
+.cardsSection {
+    height: 65vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centra las cards verticalmente en su área */
+    z-index: 1;
 }
 
 .cardsTrack {
     display: flex;
-    align-items: center;
-    gap: 150px;
-
-    /* Aumenta este valor para empujar las cards a la derecha */
-    padding-left: 50vw;
-
-    /* Mantén un padding a la derecha similar o menor para el final del scroll */
-    padding-right: 40vw;
-
+    /* Importante: permite que el track sea tan ancho como sus hijos */
+    width: max-content;
+    gap: 50px;
+    padding-left: 7vw;
+    padding-right: 25vw;
     height: 100%;
+    align-items: center;
     will-change: transform;
-    z-index: 1;
 }
 
 .card {
-    min-width: 35vw;
-    width: 35vw;
-    height: 75vh;
-    border-radius: 28px;
+    /* 1. Mantenemos tus propiedades originales */
+    width: 60vw;
+    min-width: 60vw;
+    height: 40vh;
+    background: white;
+    border-radius: 10px; /* Importante: border-image puede complicar los radios */
     display: flex;
-    flex-direction: column;
-    /* Quitamos el justify-content center para controlar el flujo manualmente */
-    justify-content: flex-start;
-    flex-shrink: 0;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
-    background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(6px) saturate(180%);
-    backdrop-filter: blur(6px) saturate(180%);
+    flex-direction: row;
     overflow: hidden;
-    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+
+    /* 2. Definimos el ancho del borde (necesario para border-image) */
+    border-width: 1px;
+    border-style: solid;
+
+    /* 3. Definimos el degradado del borde */
+    /* Usamos un degradado lineal que va de transparente a sólido */
+    border-image: linear-gradient(
+            to right, /* Dirección del degradado */
+            rgba(33, 84, 227, 0) -40%, /* Inicio: Azul con 0% opacidad (transparente) hasta el 30% del ancho */
+            rgba(33, 84, 227, 1) 100% /* Fin: Azul sólido al 100% */
+    ) 1; /* El '1' es el slice, necesario para que el degradado cubra todo el borde */
 }
 
+.card {
+    width: 50vw;
+    min-width: 50vw;
+    height: 40vh;
+    background: white;
+    border-radius: 10px; /* Aquí defines el redondeo */
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    position: relative;
+    border: none;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cubre toda la card */
+    border-radius: 10px; /* Debe ser igual al de la card */
+    padding: 3px; /* Este es el grosor de tu borde */
+
+    /* El degradado que solicitaste */
+    background: linear-gradient(
+            to right,
+            rgba(33, 84, 227, 0) -50%,
+            rgba(33, 84, 227, 1) 100%
+    );
+
+    /* Técnica de máscara para mostrar solo el borde */
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none; /* Para que no bloquee clics en el contenido */
+}
+
+/* Contenedor del Icono: 60% de la card */
 .cardIcon {
-    width: 100%;
-    /* 1. Le damos un poco más de peso a la parte superior */
-    height: 55%;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    /* 2. Empujamos todo un poco hacia abajo para que no pegue al borde */
-    justify-content: flex-end;
-    padding-bottom: 20px;
+    padding: 20px;
 }
 
 .iconRelativeContainer {
     position: relative;
-    /* 3. Icono más grande (Jugable: 140px a 180px) */
-    width: 160px;
-    height: 160px;
+    /* Tamaño fijo para que no se apilen o estiren como en tu error */
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
+.iconImage {
+    object-fit: contain; /* Evita que el SVG se deforme */
 }
 
 .cardTitle {
+    font-size: 3.5rem; /* Ajustado al mockup */
+    font-weight: 700;
     color: #2154E3;
-    /* 4. Tamaño de título (Jugable: 4rem a 6rem) */
-    font-size: 5rem;
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    margin: 10px 0 0 0;
-    text-align: center;
+    margin-top: 20px;
 }
 
+/* Contenedor de Texto: 40% de la card */
 .cardContent {
-    /* 5. Reducimos ligeramente el contenedor de texto */
-    height: 45%;
-    width: 100%;
+    height: 100%;
+    padding: 40px 60px;
     display: flex;
     flex-direction: column;
-    /* 6. Alineamos al inicio para que el texto "tire para arriba" */
-    justify-content: flex-start;
-    /* 7. Padding superior generoso para que respire */
-    padding: 60px 40px;
-    background-color: #C4D5F9;
-    border-bottom-left-radius: 28px;
-    border-bottom-right-radius: 28px;
+    justify-content: start;
+    align-content: start;
+    align-items: start;
+    border-top: 1px solid #f1f5f9;
 }
 
 .cardContent p {
-    color: #000000;
-    /* 8. Texto de descripción más grande */
-    font-size: 1.5rem;
-    line-height: 1.4;
-    font-weight: 450;
-    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #334155;
     text-align: left;
 }
 
-.highlight {
-    color: #2154E3;
-    font-weight: 600;
+.cardContent h3 {
+    width: 100%;
+    text-align: left;
+}
+
+/* Decoración Flor */
+.flowerWrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    opacity: 0.2;
+    pointer-events: none;
 }

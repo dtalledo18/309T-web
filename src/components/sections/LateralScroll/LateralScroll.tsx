@@ -36,74 +36,59 @@ export default function LateralScroll() {
         const cardsTrack = cardsTrackRef.current;
         if (!pinContainer || !cardsTrack) return;
 
+        // Calculamos el desplazamiento: ancho total del track menos lo que ya vemos en pantalla
         const getScrollAmount = () => {
-            const trackWidth = cardsTrack.scrollWidth;
-            const viewportWidth = window.innerWidth;
-            const cards = cardsTrack.querySelectorAll(`.${styles.card}`);
-            const lastCard = cards[cards.length - 1] as HTMLElement;
-            const lastCardCenter = lastCard.offsetLeft + lastCard.offsetWidth / 2;
-            const viewportCenter = viewportWidth / 2;
-            return lastCardCenter - viewportCenter;
+            return cardsTrack.scrollWidth - window.innerWidth;
         };
 
-        const scrollAmount = getScrollAmount();
-
         gsap.to(cardsTrack, {
-            x: -scrollAmount,
+            x: () => -(cardsTrack.scrollWidth - window.innerWidth),
             ease: "none",
             scrollTrigger: {
                 trigger: pinContainer,
-                // CAMBIO CLAVE 1: "top center" hace que el pin ocurra cuando
-                // la sección llega al centro de la pantalla, no arriba del todo.
-                // Si quieres que sea arriba pero sin saltos, usa "top top".
-                start: "center center",
-                end: () => `+=${scrollAmount}`,
+                start: "top top",
+                // Multiplicamos por la cantidad de cards para que el scroll se sienta natural
+                end: () => `+=${cardsTrack.scrollWidth}`,
                 scrub: 1,
                 pin: true,
-                // CAMBIO CLAVE 2: Ajustamos anticipatePin.
-                // Valores más altos (como 1.5) ayudan a evitar el parpadeo en móviles y scrolls rápidos.
-                anticipatePin: 1.5,
                 invalidateOnRefresh: true,
-                // CAMBIO CLAVE 3: Marcadores para que veas dónde empieza y termina (quítalo luego)
-                // markers: true,
             }
         });
-
     }, { scope: pinContainerRef });
 
     return (
         <section ref={pinContainerRef} className={styles.pinContainer}>
-            <div className={styles.introSide}>
-                <h2 className={styles.mainTitle}>
-                    <span className={styles.blueText}>309T</span><br />
-                    FEATURES
-                </h2>
+            {/* 30% SUPERIOR: Header Oscuro */}
+            <div className={styles.darkHeader}>
+                <div className={styles.headerContent}>
+                    <h2 className={styles.mainTitle}>
+                        <span className={styles.blueText}>309T</span><br />
+                        FEATURES
+                    </h2>
+                </div>
+                {/* Elemento decorativo flor */}
+                <div className={styles.flowerWrapper}>
+                    <Image src="/flower-outline.png" alt="" fill className={styles.flowerImg} />
+                </div>
             </div>
 
-            <div className={styles.flowerWrapper}>
-                <Image src="/flower-outline.png" alt="" fill className={styles.flowerImg} />
-            </div>
-
-            <div ref={cardsTrackRef} className={styles.cardsTrack}>
-                {CARDS.map((card, index) => (
-                    <div key={index} className={styles.card}>
-                        <div className={styles.cardIcon}>
-                            <div className={styles.iconRelativeContainer}>
-                                <Image
-                                    src={card.icon}
-                                    alt={card.title}
-                                    fill
-                                    sizes="(max-width: 768px) 10vw, 5vw"
-                                    className={styles.iconImage}
-                                />
+            {/* 70% INFERIOR: Area de Cards */}
+            <div className={styles.cardsSection}>
+                <div ref={cardsTrackRef} className={styles.cardsTrack}>
+                    {CARDS.map((card, index) => (
+                        <div key={index} className={styles.card}>
+                            <div className={styles.cardIcon}>
+                                <div className={styles.iconRelativeContainer}>
+                                    <Image src={card.icon} alt={card.title} fill className={styles.iconImage} />
+                                </div>
                             </div>
-                            <h3 className={styles.cardTitle}>{card.title}</h3>
+                            <div className={styles.cardContent}>
+                                <h3 className={styles.cardTitle}>{card.title}</h3>
+                                <p>{card.desc}</p>
+                            </div>
                         </div>
-                        <div className={styles.cardContent}>
-                            <p>{card.desc}</p>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );
