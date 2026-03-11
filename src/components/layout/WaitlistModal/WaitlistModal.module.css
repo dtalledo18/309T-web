@@ -1,77 +1,151 @@
-.overlay {
+.toastContainer {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    bottom: 24px;
+    right: 24px;
+    width: 500px;
     z-index: 10000;
-    backdrop-filter: blur(5px);
+    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal {
+.modalContent {
     background: white;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid #f0f0f0;
 }
 
 .header {
     background: #1142c5;
     color: white;
-    padding: 20px 24px;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.title { margin: 0; font-size: 1.4rem; font-weight: 600; }
-
-.closeBtn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    opacity: 0.8;
-}
+.title { margin: 0; font-size: 1.25rem; font-weight: 600; }
 
 .form { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-.input, .select, .textarea {
+.input, .textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
     font-size: 0.95rem;
+    color: #1f2937;
+    transition: border-color 0.2s;
+}
+
+.select {
+    width: 100%;
+    padding: 12px 40px 12px 16px; /* Más padding a la derecha para la flecha */
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    appearance: none; /* Elimina la flecha nativa de HTML */
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center; /* Posiciona la flecha correctamente */
+    background-size: 18px;
+    background-color: white;
+    cursor: pointer;
+    color: #1f2937;
+}
+
+.select:invalid {
+    color: #9ca3af; /* Este es el color estándar de placeholder (gris claro) */
+}
+
+/* Estilo para las opciones dentro de la lista (para que vuelvan a ser negras) */
+.select option {
+    color: #1f2937;
+    background-color: white;
+}
+
+/* Asegúrate de que tus otros inputs tengan el mismo color de placeholder */
+.input::placeholder, .textarea::placeholder {
+    color: #9ca3af;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+    border-color: #1142c5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(17, 66, 197, 0.1); /* Efecto de foco moderno */
 }
 
 .checkboxContainer {
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
+    align-items: center; /* Centrado vertical exacto */
+    gap: 12px;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    accent-color: #1142c5; /* Color azul para el check cuando esté marcado */
+    flex-shrink: 0; /* Evita que el checkbox se aplaste si el texto es largo */
+}
+
+.checkboxText {
+    font-size: 0.85rem;
+    color: #4b5563;
+    line-height: 1; /* Ajustado para mejor alineación visual */
+    user-select: none;
+}
+
+.checkboxText { font-size: 0.85rem; color: #4b5563; line-height: 1.4; }
+
+/* Estilo reCAPTCHA */
+.captchaBox {
+    background: #f9f9f9;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 8px 0;
 }
 
-.checkboxText { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
+.captchaLeft { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #000; }
 
+.captchaCheck { width: 24px; height: 24px; cursor: pointer; }
+
+.captchaRight { display: flex; flex-direction: column; align-items: center; }
+
+.captchaRight img { width: 28px; height: 28px; }
+
+.captchaRight span { font-size: 0.65rem; color: #555; font-weight: 500; }
+
+.captchaLinks { font-size: 0.6rem; color: #777; }
+
+/* Botón llamativo estilo 309T */
 .submitBtn {
-    background: #ccff00;
-    color: black;
+    background: #ccff00; /* Color limón neón */
+    color: #000;
     border: none;
-    padding: 14px;
+    padding: 16px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background 0.2s;
+    margin-top: 8px;
 }
 
-.submitBtn:hover { transform: scale(1.02); }
+.submitBtn:hover { transform: translateY(-2px); background: #b5e600; }
+
+@keyframes slideIn {
+    from { transform: translateX(120%) scale(0.9); opacity: 0; }
+    to { transform: translateX(0) scale(1); opacity: 1; }
+}
