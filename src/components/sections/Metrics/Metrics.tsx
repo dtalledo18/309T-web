@@ -62,18 +62,18 @@ export default function Metrics() {
         if (!pinContainer || !cardsTrack) return;
 
         const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
-
-        const gap = parseFloat(
-            getComputedStyle(cardsTrack).rowGap || "24"
-        );
-
+        const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
+        const sectionHeight = pinContainer.offsetHeight;
         const cardHeight = cards[0].offsetHeight;
+        const centerOffset = (sectionHeight - cardHeight) / 2;
+
+        cardsTrack.style.paddingTop = `${centerOffset}px`;
+        cardsTrack.style.paddingBottom = `${centerOffset}px`;
 
         const totalMovement = (cardHeight + gap) * (cards.length - 1);
 
-        if (pinContainer) {
-            pinContainer.style.marginBottom = `${totalMovement}px`;
-        }
+
+        pinContainer.style.marginBottom = `${totalMovement}px`;
 
         gsap.to(cardsTrack, {
             y: -totalMovement,
@@ -86,10 +86,9 @@ export default function Metrics() {
                 pin: true,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
-                pinSpacing: false  // <- esto
-            }
+                pinSpacing: false,
+            },
         });
-
     }, { scope: pinContainerRef });
 
     return (

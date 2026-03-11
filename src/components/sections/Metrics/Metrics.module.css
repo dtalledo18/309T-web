@@ -47,13 +47,12 @@
 
 /* Ventana que muestra solo una card */
 .viewport {
-    width: 50%; /* Un poco más ancho que la card para el shadow */
-    height: 600px;
+    width: 60%;
+    height: 100vh;
     overflow: hidden;
     flex-shrink: 0;
     position: relative;
     z-index: 2;
-    padding: 10px; /* Espacio para que el blur/shadow no se corte */
 }
 
 .cardsTrack {
@@ -65,7 +64,7 @@
 }
 
 .card {
-    width: 100%;
+    width: 90%;
     height: 580px;
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.1);
