@@ -58,31 +58,6 @@
 }
 
 .card {
-    /* 1. Mantenemos tus propiedades originales */
-    width: 60vw;
-    min-width: 60vw;
-    height: 40vh;
-    background: white;
-    border-radius: 10px; /* Importante: border-image puede complicar los radios */
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-
-    /* 2. Definimos el ancho del borde (necesario para border-image) */
-    border-width: 1px;
-    border-style: solid;
-
-    /* 3. Definimos el degradado del borde */
-    /* Usamos un degradado lineal que va de transparente a sólido */
-    border-image: linear-gradient(
-            to right, /* Dirección del degradado */
-            rgba(33, 84, 227, 0) -40%, /* Inicio: Azul con 0% opacidad (transparente) hasta el 30% del ancho */
-            rgba(33, 84, 227, 1) 100% /* Fin: Azul sólido al 100% */
-    ) 1; /* El '1' es el slice, necesario para que el degradado cubra todo el borde */
-}
-
-.card {
     width: 50vw;
     min-width: 50vw;
     height: 40vh;
@@ -126,7 +101,7 @@
 /* Contenedor del Icono: 60% de la card */
 .cardIcon {
     height: 100%;
-    width: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,9 +111,8 @@
 
 .iconRelativeContainer {
     position: relative;
-    /* Tamaño fijo para que no se apilen o estiren como en tu error */
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     margin: auto;
 }
 
@@ -149,14 +123,19 @@
 .cardTitle {
     font-size: 3.5rem; /* Ajustado al mockup */
     font-weight: 700;
-    color: #2154E3;
+    color: #1641B6;
     margin-top: 20px;
+}
+
+.highlight{
+    color:#143BA5;
 }
 
 /* Contenedor de Texto: 40% de la card */
 .cardContent {
     height: 100%;
-    padding: 40px 60px;
+    width: 70%;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: start;
