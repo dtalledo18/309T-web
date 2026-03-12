@@ -1,18 +1,21 @@
 'use client';
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import Header from '@/components/layout/Header/Header';
 import Hero3D from '@/components/sections/Hero3D/Hero3D';
-import LateralScroll from '@/components/sections/LateralScroll/LateralScroll';
+import AboutUs from "@/components/sections/AboutUs/AboutUs";
 import Calculator from '@/components/sections/Calculator/Calculator';
+import VideoSection from "@/components/sections/VideoSection/VideoSection";
+import LateralScroll from '@/components/sections/LateralScroll/LateralScroll';
+import Metrics from "@/components/sections/Metrics/Metrics";
 import FAQ from '@/components/sections/FAQ/FAQ';
 import Footer from '@/components/layout/Footer/Footer';
-import AboutUs from "@/components/sections/AboutUs/AboutUs";
-import VideoSection from "@/components/sections/VideoSection/VideoSection";
-import Metrics from "@/components/sections/Metrics/Metrics";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {useEffect} from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-
     useEffect(() => {
         ScrollTrigger.config({
             ignoreMobileResize: true,
@@ -26,10 +29,7 @@ export default function Home() {
 
     return (
         <>
-            {/* Header FUERA del color-root para que su backdrop-filter
-                vea el contenido real de la página detrás */}
             <Header />
-
             <div id="color-root" style={{ backgroundColor: '#ffffff' }}>
                 <div id="color-root-gradient" style={{
                     position: 'fixed',

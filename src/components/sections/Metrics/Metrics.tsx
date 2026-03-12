@@ -135,22 +135,22 @@ export default function Metrics() {
     return (
         <section ref={pinContainerRef} className={styles.section} id="values">
             <div ref={p1} className={`${styles.petalBase} ${styles.pTopLeft}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
             </div>
             <div ref={p2} className={`${styles.petalBase} ${styles.pTopCenter}`}>
-                <Image src="/petal-2.webp" alt="" width={205} height={222} />
+                <Image src="/petal-2.webp" alt="" width={205} height={222} loading="lazy"/>
             </div>
             <div ref={p3} className={`${styles.petalBase} ${styles.pTopRight}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
             </div>
             <div ref={p4} className={`${styles.petalBase} ${styles.pBottomLeft}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
             </div>
             <div ref={p5} className={`${styles.petalBase} ${styles.pMidLeft}`}>
-                <Image src="/petal-2.webp" alt="" width={205} height={222} />
+                <Image src="/petal-2.webp" alt="" width={205} height={222} loading="lazy"/>
             </div>
             <div ref={p6} className={`${styles.petalBase} ${styles.pBottomRight}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
             </div>
 
             <div className={styles.viewport}>

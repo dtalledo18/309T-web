@@ -61,7 +61,7 @@ export default function AboutUs() {
                         alt="309T Interface on Laptop, Tablet and Mobile"
                         width={1400} // Ajusta según el tamaño original de tu PNG
                         height={1000}
-                        priority={false} // Se carga solo cuando el usuario hace scroll hacia abajo
+                        loading="eager" priority
                         className={styles.devicesImg}
                     />
                 </div>
