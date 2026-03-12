@@ -127,8 +127,8 @@
     height: 580px;
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(6px) saturate(180%);
-    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    -webkit-backdrop-filter: blur(6px) saturate(90%);
+    backdrop-filter: blur(6px) saturate(90%);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 40px;
