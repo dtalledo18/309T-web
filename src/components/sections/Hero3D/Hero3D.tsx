@@ -47,6 +47,14 @@ function HVACModel() {
 }
 
 export default function Hero3D() {
+    const scrollToAbout = () => {
+        // Buscamos el elemento por ID
+        const aboutSection = document.getElementById('about-text');
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section className={styles.hero}>
             <div className={styles.textContent}>
@@ -59,7 +67,7 @@ export default function Hero3D() {
                     </p>
                 </div>
                 <div>
-                    <button className="mt-10 px-8 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform">
+                    <button onClick={scrollToAbout} className="mt-10 px-8 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform">
                         Explore 309T
                     </button>
                 </div>
@@ -104,4 +112,4 @@ export default function Hero3D() {
 }
 
 // Pre-carga el modelo para evitar tirones visuales
-useGLTF.preload('/models/HVAC-animated.glb');
+useGLTF.preload('/models/HVAC-animated-3.glb');

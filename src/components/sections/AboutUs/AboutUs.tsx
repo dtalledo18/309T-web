@@ -50,7 +50,7 @@ export default function AboutUs() {
                     />
                 </div>
 
-                <p className={styles.description}>
+                <p className={styles.description} id="about-text">
                     <strong>309T</strong> leverages custom end to end AI/ML models to scan and detect HVAC damage with surgical precision. We transform weeks of manual paperwork into Audit-Ready technical reports in minutes that supports your expertise, using verified equipment databases to provide a single source of truth for both technicians and insurance carriers. Engineered for the field, tested in the extremes of Chicago.
                 </p>
 
