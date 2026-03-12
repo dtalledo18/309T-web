@@ -13,6 +13,8 @@ import Metrics from "@/components/sections/Metrics/Metrics";
 import FAQ from '@/components/sections/FAQ/FAQ';
 import Footer from '@/components/layout/Footer/Footer';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
     return (
         <>
