@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -62,6 +62,36 @@ const CARDS = [
 export default function Metrics() {
     const pinContainerRef = useRef<HTMLDivElement>(null);
     const cardsTrackRef = useRef<HTMLDivElement>(null);
+    const p1 = useRef<HTMLDivElement>(null);
+    const p2 = useRef<HTMLDivElement>(null);
+    const p3 = useRef<HTMLDivElement>(null);
+    const p4 = useRef<HTMLDivElement>(null);
+    const p5 = useRef<HTMLDivElement>(null);
+    const p6 = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const petals = [
+            { ref: p1, x: 45, y: 55, rot: 12, dur: 10 },
+            { ref: p2, x: 30, y: 35, rot: 15, dur: 7  },
+            { ref: p3, x: 50, y: 30, rot: 10, dur: 12 },
+            { ref: p4, x: 40, y: 50, rot: 14, dur: 8  },
+            { ref: p5, x: 25, y: 40, rot: 18, dur: 6  },
+            { ref: p6, x: 55, y: 25, rot: 8,  dur: 14 },
+        ];
+
+        petals.forEach(({ ref, x, y, rot, dur }) => {
+            if (!ref.current) return;
+            gsap.to(ref.current, {
+                x: `+=${x}`,
+                y: `+=${y}`,
+                rotation: `+=${rot}`,
+                duration: dur,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+            });
+        });
+    }, []);
 
     useGSAP(() => {
         const pinContainer = pinContainerRef.current;
@@ -100,22 +130,22 @@ export default function Metrics() {
 
     return (
         <section ref={pinContainerRef} className={styles.section} id="values">
-            <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
+            <div ref={p1} className={`${styles.petalBase} ${styles.pTopLeft}`}>
                 <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
-            <div className={`${styles.petalBase} ${styles.pTopCenter}`}>
+            <div ref={p2} className={`${styles.petalBase} ${styles.pTopCenter}`}>
                 <Image src="/petal-2.webp" alt="" width={205} height={222} />
             </div>
-            <div className={`${styles.petalBase} ${styles.pTopRight}`}>
+            <div ref={p3} className={`${styles.petalBase} ${styles.pTopRight}`}>
                 <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
-            <div className={`${styles.petalBase} ${styles.pBottomLeft}`}>
+            <div ref={p4} className={`${styles.petalBase} ${styles.pBottomLeft}`}>
                 <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
-            <div className={`${styles.petalBase} ${styles.pMidLeft}`}>
+            <div ref={p5} className={`${styles.petalBase} ${styles.pMidLeft}`}>
                 <Image src="/petal-2.webp" alt="" width={205} height={222} />
             </div>
-            <div className={`${styles.petalBase} ${styles.pBottomRight}`}>
+            <div ref={p6} className={`${styles.petalBase} ${styles.pBottomRight}`}>
                 <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -30,6 +30,30 @@ const CARDS = [
 export default function LateralScroll() {
     const pinContainerRef = useRef<HTMLDivElement>(null);
     const cardsTrackRef = useRef<HTMLDivElement>(null);
+    const petal1Ref = useRef<HTMLDivElement>(null);
+    const petal2Ref = useRef<HTMLDivElement>(null);
+    const petal3Ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const petals = [
+            { ref: petal1Ref, x: 40, y: 50, rot: 10, dur: 10 },
+            { ref: petal2Ref, x: 25, y: 35, rot: 14, dur: 7  },
+            { ref: petal3Ref, x: 50, y: 30, rot: 8,  dur: 13 },
+        ];
+
+        petals.forEach(({ ref, x, y, rot, dur }) => {
+            if (!ref.current) return;
+            gsap.to(ref.current, {
+                x: `+=${x}`,
+                y: `+=${y}`,
+                rotation: `+=${rot}`,
+                duration: dur,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true,
+            });
+        });
+    }, []);
 
     useGSAP(() => {
         const pinContainer = pinContainerRef.current;
@@ -67,13 +91,13 @@ export default function LateralScroll() {
                     </h2>
                 </div>
                 {/* Elemento decorativo flor */}
-                <div className={styles.flowerWrapperOne}>
+                <div ref={petal1Ref} className={styles.flowerWrapperOne}>
                     <Image src="/petal-1.webp" alt="" fill className={styles.petalOneImg} />
                 </div>
-                <div className={styles.flowerWrapperTwo}>
+                <div ref={petal2Ref} className={styles.flowerWrapperTwo}>
                     <Image src="/petal-2.webp" alt="" fill className={styles.petalTwoImg} />
                 </div>
-                <div className={styles.flowerWrapperThree}>
+                <div ref={petal3Ref} className={styles.flowerWrapperThree}>
                     <Image src="/petal-1.webp" alt="" fill className={styles.petalThreeImg} />
                 </div>
             </div>
