@@ -25,7 +25,7 @@ const FAQ_DATA = [
 export default function FAQ() {
     const { openWaitlist } = useWaitlist(); // Extraemos la función
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id="faq">
             {/* Imagen decorativa de fondo (Flor/Unión) */}
             <div className={styles.bgDecor}>
                 <Image src="/union.webp" alt="" width={600} height={600} priority />
