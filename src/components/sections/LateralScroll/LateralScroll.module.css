@@ -60,9 +60,9 @@
 .card {
     width: 50vw;
     min-width: 50vw;
-    height: 40vh;
+    height: 45vh;
     background: white;
-    border-radius: 10px; /* Aquí defines el redondeo */
+    border-radius: 20px; /* Aquí defines el redondeo */
     display: flex;
     flex-direction: row;
     overflow: hidden;
@@ -75,8 +75,8 @@
     content: "";
     position: absolute;
     inset: 0; /* Cubre toda la card */
-    border-radius: 10px; /* Debe ser igual al de la card */
-    padding: 3px; /* Este es el grosor de tu borde */
+    border-radius: 20px; /* Debe ser igual al de la card */
+    padding: 4px; /* Este es el grosor de tu borde */
 
     /* El degradado que solicitaste */
     background: linear-gradient(
@@ -145,7 +145,7 @@
 }
 
 .cardContent p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1.5;
     color: #334155;
     text-align: left;

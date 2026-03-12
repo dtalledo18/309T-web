@@ -2,6 +2,8 @@
     background-color: #252F4A; /* Bluegray scale/900 exacto */
     padding: 80px 60px 40px 60px;
     color: #ffffff;
+    position: relative;
+    z-index: 1;
 }
 
 .container {

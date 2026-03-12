@@ -17,7 +17,15 @@ export default function Home() {
             <Header />
 
             <div id="color-root" style={{ backgroundColor: '#ffffff' }}>
-                <main>
+                <div id="color-root-gradient" style={{
+                    position: 'fixed',
+                    inset: 0,
+                    background: 'linear-gradient(135deg, #0E111B 0%, #252F4A 100%)',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    zIndex: 0,
+                }} />
+                <main style={{ position: 'relative', zIndex: 1 }}>
                     <Hero3D />
                     <AboutUs />
                     <Calculator />
