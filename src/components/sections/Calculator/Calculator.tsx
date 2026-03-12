@@ -2,6 +2,7 @@
 import { useState, useRef } from 'react';
 import { useColorSwitch } from '@/hooks/useColorSwitch';
 import styles from './Calculator.module.css';
+import Image from "next/image";
 
 export default function Calculator() {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -24,6 +25,28 @@ export default function Calculator() {
 
     return (
         <section ref={sectionRef} className={styles.container}>
+
+            <div className={styles.decorBackground}>
+                <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
+                    <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                </div>
+                <div className={`${styles.petalBase} ${styles.pTopCenter}`}>
+                    <Image src="/petal-2.webp" alt="" width={205} height={222} />
+                </div>
+                <div className={`${styles.petalBase} ${styles.pTopRight}`}>
+                    <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                </div>
+                <div className={`${styles.petalBase} ${styles.pBottomLeft}`}>
+                    <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                </div>
+                <div className={`${styles.petalBase} ${styles.pMidLeft}`}>
+                    <Image src="/petal-2.webp" alt="" width={205} height={222} />
+                </div>
+                <div className={`${styles.petalBase} ${styles.pBottomRight}`}>
+                    <Image src="/petal-1.webp" alt="" width={475} height={554} />
+                </div>
+            </div>
+
             <div className={styles.glassCard}>
                 <div className={styles.processHeader}>
                     <div className={styles.col}>
