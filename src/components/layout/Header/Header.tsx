@@ -8,31 +8,29 @@ export default function Header() {
     const [isCompact, setIsCompact] = useState(false);
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            const trigger = document.getElementById("about");
-            if (!trigger) return;
-
-            const rect = trigger.getBoundingClientRect();
-
-            if (rect.top <= 90) {
-                setIsCompact(true);
-            } else {
-                setIsCompact(false);
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const trigger = document.getElementById("about");
+                    if (trigger) {
+                        const rect = trigger.getBoundingClientRect();
+                        setIsCompact(rect.top <= 90);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
         <header className={`${styles.header} ${isCompact ? styles.compact : ''}`}>
-            <img
-                src="/logo.svg"
-                alt="309T Logo"
-                className={styles.logo}
-            />
-
+            <img src="/logo.svg" alt="309T Logo" className={styles.logo} />
             <div className={styles.rightSide}>
                 {!isCompact && (
                     <nav className={styles.nav}>
@@ -43,11 +41,7 @@ export default function Header() {
                         <a href="#faq">FAQ</a>
                     </nav>
                 )}
-
-                <button
-                    className={styles.btnWaitlist}
-                    onClick={openWaitlist}
-                >
+                <button className={styles.btnWaitlist} onClick={openWaitlist}>
                     Join the Waitlist
                 </button>
             </div>

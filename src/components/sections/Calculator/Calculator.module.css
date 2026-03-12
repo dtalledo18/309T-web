@@ -22,7 +22,8 @@
     pointer-events: none;
     mix-blend-mode: screen;
     z-index: 1;
-    will-change: transform, opacity;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .pTopLeft {

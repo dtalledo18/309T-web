@@ -8,8 +8,22 @@ import Footer from '@/components/layout/Footer/Footer';
 import AboutUs from "@/components/sections/AboutUs/AboutUs";
 import VideoSection from "@/components/sections/VideoSection/VideoSection";
 import Metrics from "@/components/sections/Metrics/Metrics";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {useEffect} from "react";
 
 export default function Home() {
+
+    useEffect(() => {
+        ScrollTrigger.config({
+            ignoreMobileResize: true,
+            autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+        });
+
+        const onLoad = () => ScrollTrigger.refresh(true);
+        window.addEventListener('load', onLoad);
+        return () => window.removeEventListener('load', onLoad);
+    }, []);
+
     return (
         <>
             {/* Header FUERA del color-root para que su backdrop-filter

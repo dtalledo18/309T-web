@@ -33,7 +33,8 @@ export default function AboutUs() {
                     trigger: container.current,
                     start: "top 60%",   // empieza cuando la sección entra al viewport
                     end: "center center", // termina cuando el centro de la sección llega al centro de la pantalla
-                    scrub: 1.5,          // suaviza el seguimiento del scroll
+                    scrub: 1,          // suaviza el seguimiento del scroll
+                    invalidateOnRefresh: true,
                 }
             }
         );
