@@ -13,20 +13,7 @@ import Metrics from "@/components/sections/Metrics/Metrics";
 import FAQ from '@/components/sections/FAQ/FAQ';
 import Footer from '@/components/layout/Footer/Footer';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Home() {
-    useEffect(() => {
-        ScrollTrigger.config({
-            ignoreMobileResize: true,
-            autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
-        });
-
-        const onLoad = () => ScrollTrigger.refresh(true);
-        window.addEventListener('load', onLoad);
-        return () => window.removeEventListener('load', onLoad);
-    }, []);
-
     return (
         <>
             <Header />
