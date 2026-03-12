@@ -24,7 +24,7 @@ export default function Calculator() {
     const savings = Math.max(0, Math.floor(oldProcessCost - newProcessCost)).toLocaleString('en-US');
 
     return (
-        <section ref={sectionRef} className={styles.container}>
+        <section ref={sectionRef} className={styles.container} id="calculator">
 
             <div className={styles.decorBackground}>
                 <div className={`${styles.petalBase} ${styles.pTopLeft}`}>

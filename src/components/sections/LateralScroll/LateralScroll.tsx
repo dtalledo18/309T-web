@@ -57,7 +57,7 @@ export default function LateralScroll() {
     }, { scope: pinContainerRef });
 
     return (
-        <section ref={pinContainerRef} className={styles.pinContainer}>
+        <section ref={pinContainerRef} className={styles.pinContainer} id="features">
             {/* 30% SUPERIOR: Header Oscuro */}
             <div className={styles.darkHeader}>
                 <div className={styles.headerContent}>

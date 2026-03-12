@@ -99,7 +99,7 @@ export default function Metrics() {
     }, { scope: pinContainerRef });
 
     return (
-        <section ref={pinContainerRef} className={styles.section}>
+        <section ref={pinContainerRef} className={styles.section} id="values">
             <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
                 <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>

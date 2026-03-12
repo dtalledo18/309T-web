@@ -37,6 +37,7 @@ export default function Header() {
                 {!isCompact && (
                     <nav className={styles.nav}>
                         <a href="#about">About us</a>
+                        <a href="#calculator">Calculator</a>
                         <a href="#features">Features</a>
                         <a href="#values">Values</a>
                         <a href="#faq">FAQ</a>
