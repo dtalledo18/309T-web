@@ -177,6 +177,6 @@
     line-height: 1.6;
 }
 
-.shieldIcon {
+.shieldIcon, .deviceIcon, .worldIcon {
     margin-bottom: 24px;
 }

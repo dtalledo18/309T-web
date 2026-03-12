@@ -20,27 +20,37 @@ const CARDS = [
     },
     {
         content: (
-            <p className={styles.cardText}>
-                <strong>Clarity speeds up claims with Audit-Ready Reports.</strong>
-                <br /><br />
-                Providing a single, trusted source that meets transparency standards.
-            </p>
+            <>
+                <div className={styles.deviceIcon}>
+                    <Image src="/icons/devices.webp" alt="Shield" width={120} height={120} />
+                </div>
+                <p className={styles.cardText}>
+                    <strong>A robust multi-platform User Experience ecosystem.</strong>
+                    <br /><br />
+                    Technical precision, Mobile-optimized interface with full-scale depth on any screen you use.
+                </p>
+            </>
         ),
     },
     {
         content: (
-            <p className={styles.cardText}>
-                <strong>Clarity speeds up claims with Audit-Ready Reports.</strong>
-                <br /><br />
-                Providing a single, trusted source that meets transparency standards.
-            </p>
+            <>
+                <div className={styles.worldIcon}>
+                    <Image src="/icons/world_heart.webp" alt="Shield" width={120} height={120} />
+                </div>
+                <p className={styles.cardText}>
+                    <strong>Algorithm speed with human expertise.</strong>
+                    <br /><br />
+                    Precise measurements, no guesswork. The new standard for HVAC accuracy.
+                </p>
+            </>
         ),
     },
     {
         content: (
             <>
                 <div className={styles.shieldIcon}>
-                    <Image src="/icons/shield.png" alt="Shield" width={120} height={120} />
+                    <Image src="/icons/shield.webp" alt="Shield" width={120} height={120} />
                 </div>
                 <p className={styles.cardTextCenter}>
                     <strong>Clarity speeds up claims with Audit-Ready Reports.</strong>
