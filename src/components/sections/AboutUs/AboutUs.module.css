@@ -76,3 +76,79 @@
     display: flex;
     justify-content: center;
 }
+/* TABLET */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .section {
+        padding: 80px 24px 140px 24px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 40px auto 80px auto;
+    }
+
+    .imageWrapper {
+        max-width: 900px;
+    }
+
+    .flowerImg {
+        width: 1000px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 0 180px 0;
+        min-height: auto;
+        overflow: hidden;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 320px;
+        margin: 30px auto 50px auto;
+        padding: 0 24px;
+    }
+
+    /* Fondo de ruido TV sin señal */
+    .section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+        background-size: 150px 150px;
+        opacity: 0.06;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .flowerWrapper {
+        display: none;
+    }
+
+    /* Imagen sale por los lados */
+    .imageWrapper {
+        width: 130%;
+        max-width: none;
+        margin-left: -15%;
+        margin-right: -15%;
+        overflow: visible;
+    }
+
+    .devicesImg {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    }
+}
