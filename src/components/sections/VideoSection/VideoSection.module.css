@@ -14,7 +14,7 @@
 .videoWrapper {
     position: relative;
     width: 100%;
-    border-radius: 32px;
+    border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
 }
@@ -64,4 +64,39 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* TABLET */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .section {
+        padding: 80px 24px;
+    }
+
+    .videoImage {
+        border-radius: 20px;
+    }
+
+    .overlay {
+        border-radius: 20px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .section {
+        padding: 40px 16px;
+    }
+
+    .videoImage {
+        border-radius: 12px;
+    }
+
+    .overlay {
+        border-radius: 12px;
+    }
+
+    .glassCircle {
+        width: 60px;
+        height: 60px;
+    }
 }
