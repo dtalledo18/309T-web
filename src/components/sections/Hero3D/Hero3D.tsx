@@ -1,6 +1,6 @@
 'use client';
 import { Suspense } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
     OrbitControls,
     Stage,
@@ -12,34 +12,34 @@ import {
 import styles from './Hero3D.module.css';
 import {Canvas} from "@react-three/fiber";
 
-// Sub-componente para cargar el modelo GLB
-function HVACModel() {
-    // 1. Cargamos el modelo
+function HVACModel({ animate }: { animate: boolean }) {
     const { scene, animations } = useGLTF('/models/HVAC_v01.glb');
-
-    // 2. Extraemos las animaciones y las vinculamos a la escena
     const { actions } = useAnimations(animations, scene);
 
     useEffect(() => {
-        // 3. Reproducimos la primera animación disponible
-        // Si conoces el nombre de la animación (ej: "Scene"), usa actions["Scene"]?.play();
         const firstAction = Object.values(actions)[0];
+        if (!firstAction) return;
 
-        if (firstAction) {
+        if (animate) {
             firstAction.reset().fadeIn(0.5).play();
+        } else {
+            // Mobile: congela en frame 0
+            firstAction.reset();
+            firstAction.play();
+            firstAction.paused = true;
+            firstAction.time = 0;
         }
 
-        // Limpieza al desmontar
         return () => {
             firstAction?.fadeOut(0.5);
         };
-    }, [actions]);
+    }, [actions, animate]);
 
     return (
         <primitive
             object={scene}
             scale={1.5}
-            position={[0.35, 1, 0]}
+            position={[0, 0, 0]}
             castShadow
             receiveShadow
         />
@@ -47,8 +47,16 @@ function HVACModel() {
 }
 
 export default function Hero3D() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 768);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
+
     const scrollToAbout = () => {
-        // Buscamos el elemento por ID
         const aboutSection = document.getElementById('about-text');
         if (aboutSection) {
             aboutSection.scrollIntoView({ behavior: 'smooth' });
@@ -74,21 +82,21 @@ export default function Hero3D() {
             </div>
 
             <div className="absolute inset-0 w-full h-full z-0">
-                <Canvas shadows dpr={[1, 2]}>
+
+            <Canvas shadows dpr={[1, 2]}>
                     <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
-
-                    {/* Suspense maneja la carga asíncrona del modelo */}
-                    <Suspense fallback={null}>
-                        <Stage
-                            environment="city"
-                            intensity={0.5}
-                            shadows={{ type: 'contact', opacity: 0.6, blur: 2 }} // Configuración como objeto
-                            adjustCamera={false}
-                        >
-                            <HVACModel />
-                        </Stage>
-                    </Suspense>
-
+                <Suspense fallback={null}>
+                    <Stage
+                        environment="city"
+                        intensity={0.5}
+                        shadows={{ type: 'contact', opacity: 0.6, blur: 2 }}
+                        adjustCamera={false}
+                    >
+                        <group position={[0.35, -1, 0]}>
+                            <HVACModel animate={!isMobile} />
+                        </group>
+                    </Stage>
+                </Suspense>
                     <ContactShadows
                         position={[0, -1.2, 0]}
                         opacity={0.6}
@@ -96,11 +104,10 @@ export default function Hero3D() {
                         blur={2.5}
                         far={4}
                     />
-
                     <OrbitControls
                         enableZoom={false}
-                        autoRotate
-                        autoRotateSpeed={0.8}
+                        autoRotate={true}
+                        autoRotateSpeed={isMobile ? 0.4 : 0.8}
                         enablePan={false}
                         minPolarAngle={Math.PI / 2.5}
                         maxPolarAngle={Math.PI / 2}
@@ -111,5 +118,4 @@ export default function Hero3D() {
     );
 }
 
-// Pre-carga el modelo para evitar tirones visuales
 useGLTF.preload('/models/HVAC_v01.glb');
