@@ -342,18 +342,131 @@
     font-weight: 600;
 }
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
-    .processHeader,
-    .calcGrid {
-        grid-template-columns: 1fr;
+/* TABLET */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container {
+        padding: 80px 20px;
     }
 
     .glassCard {
-        padding: 40px 28px;
+        padding: 50px 40px;
+    }
+
+    .processHeader {
+        gap: 40px;
+    }
+
+    .calcGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .resultDisplay {
+        padding: 32px 36px;
+    }
+
+    .amount {
+        font-size: 4rem;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .container {
+        padding: 60px 16px;
+        min-height: auto;
+        align-items: flex-start;
+    }
+
+    .glassCard {
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .processHeader {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+    }
+
+    .col h3 {
+        font-size: 1.2rem;
+        margin-bottom: 14px;
+    }
+
+    .col ul li {
+        font-size: 0.9rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 12px;
     }
 
     .subtitle {
-        max-width: 100%;
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .calcGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .inputBox {
+        padding: 14px 16px;
+        border-radius: 12px;
+    }
+
+    .inputBox label {
+        font-size: 0.75rem;
+    }
+
+    .mainInput {
+        font-size: 1.6rem;
+        width: 100%;
+        min-width: 0;
+        max-width: calc(100% - 60px); /* deja espacio para el suffix */
+    }
+
+    .inputFieldWrapper {
+        gap: 6px;
+        overflow: hidden;
+    }
+
+    .suffix {
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .resultDisplay {
+        padding: 24px 20px;
+        border-radius: 16px;
+        align-items: flex-start;
+    }
+
+    .amount {
+        font-size: 3rem;
+        gap: 8px;
+    }
+
+    .amount span {
+        font-size: 1.2rem;
+    }
+
+    .resultDisplay p {
+        font-size: 0.9rem;
+    }
+
+    .footerInfo {
+        font-size: 0.7rem;
+        line-height: 1.6;
+        margin-top: 24px;
+    }
+
+    /* Oculta pétalos en mobile para no sobrecargar */
+    .decorBackground {
+        display: none;
     }
 }
