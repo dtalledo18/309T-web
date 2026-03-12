@@ -15,7 +15,7 @@ import {Canvas} from "@react-three/fiber";
 // Sub-componente para cargar el modelo GLB
 function HVACModel() {
     // 1. Cargamos el modelo
-    const { scene, animations } = useGLTF('/models/HVAC-animated.glb');
+    const { scene, animations } = useGLTF('/models/HVAC-animated-3.glb');
 
     // 2. Extraemos las animaciones y las vinculamos a la escena
     const { actions } = useAnimations(animations, scene);

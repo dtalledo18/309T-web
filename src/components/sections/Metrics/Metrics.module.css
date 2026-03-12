@@ -16,20 +16,73 @@
     padding: 300px 0;
 }
 
-.bgDecorLeft {
+/* Estilo base para todos los pétalos */
+.petalBase {
     position: absolute;
-    left: -5%;
-    top: -5%;
     z-index: 1;
     pointer-events: none;
+    mix-blend-mode: screen; /* Ayuda a que se fundan mejor con el fondo oscuro */
 }
 
-.bgDecorRight {
-    position: absolute;
-    right: -5%;
-    bottom: 0;
-    z-index: 1;
-    pointer-events: none;
+/* 1. Arriba Izquierda - Grande y rotado */
+.pTopLeft {
+    top: -35%;
+    left: -10%;
+    width: 650px;
+    height: auto;
+    opacity: 0.03;
+    transform: rotate(-20deg);
+}
+
+/* 2. Arriba Centro - Pequeño pero muy estirado */
+.pTopCenter {
+    top: -5%;
+    left: 35%;
+    width: 350px;
+    height: auto;
+    opacity: 0.01;
+    transform: rotate(-10deg);
+}
+
+/* 3. Arriba Derecha - El más grande, entra desde el borde */
+.pTopRight {
+    top: -30%;
+    right: -8%;
+    width: 800px;
+    height: auto;
+    opacity: 0.1;
+    transform: scale(-1) rotate(15deg);
+}
+
+/* 4. Abajo Izquierda - Muy sutil en la esquina */
+.pBottomLeft {
+    bottom: -50%;
+    left: -15%;
+    width: 500px;
+    height: auto;
+    opacity: 0.08;
+    transform: scaleY(-1) rotate(30deg);
+}
+
+/* 5. Centro Izquierda (debajo del card) - Pequeño */
+.pMidLeft {
+    bottom: 25%;
+    left: 20%;
+    width: 280px;
+    height: auto;
+    opacity: 0.01;
+    transform: rotate(-15deg);
+}
+
+/* 6. Abajo Derecha - El azulado que diseñamos antes */
+.pBottomRight {
+    bottom: -20%;
+    right: -10%;
+    width: 900px;
+    height: auto;
+    opacity: 0.05;
+    transform: rotate(-10deg);
+    filter: brightness(1.2); /* Resalta un poco más el tono azul */
 }
 
 /* Título fijo a la derecha */

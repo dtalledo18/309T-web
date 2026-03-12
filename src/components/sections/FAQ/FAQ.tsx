@@ -47,7 +47,7 @@ export default function FAQ() {
                 <div className={styles.ctaWrapper}>
                     <div className={styles.imageContainer}>
                         <Image
-                            src="/hvac-roof-alt.webp"
+                            src="/hvac-roof.webp"
                             alt="HVAC units on roof"
                             width={600}
                             height={450}

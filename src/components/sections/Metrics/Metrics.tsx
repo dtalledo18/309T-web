@@ -93,11 +93,23 @@ export default function Metrics() {
 
     return (
         <section ref={pinContainerRef} className={styles.section}>
-            <div className={styles.bgDecorLeft}>
-                <Image src="/decor-blur-left.png" alt="" width={200} height={200} />
+            <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
-            <div className={styles.bgDecorRight}>
-                <Image src="/decor-blur-right.png" alt="" width={300} height={300} />
+            <div className={`${styles.petalBase} ${styles.pTopCenter}`}>
+                <Image src="/petal-2.webp" alt="" width={205} height={222} />
+            </div>
+            <div className={`${styles.petalBase} ${styles.pTopRight}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+            </div>
+            <div className={`${styles.petalBase} ${styles.pBottomLeft}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554} />
+            </div>
+            <div className={`${styles.petalBase} ${styles.pMidLeft}`}>
+                <Image src="/petal-2.webp" alt="" width={205} height={222} />
+            </div>
+            <div className={`${styles.petalBase} ${styles.pBottomRight}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554} />
             </div>
 
             <div className={styles.viewport}>
@@ -113,8 +125,6 @@ export default function Metrics() {
             <div className={styles.titleSide}>
                 <h2 className={styles.mainTitle}>THE <span className={styles.blueText}>309T</span><br />STANDARD</h2>
             </div>
-
-
         </section>
     );
 }

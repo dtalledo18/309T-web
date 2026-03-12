@@ -165,12 +165,35 @@
 }
 
 /* Decoración Flor */
-.flowerWrapper {
+.flowerWrapperOne {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -50px;
+    top: -150px;
     width: 400px;
-    height: 100%;
-    opacity: 0.2;
+    height: 500px;
+    opacity: 0.1;
     pointer-events: none;
+}
+
+.flowerWrapperTwo {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 200px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.flowerWrapperThree {
+    position: absolute;
+    left: 15%; /* Ajusta este % para acercarlo o alejarlo más del texto */
+    top: 50%; /* Centrado verticalmente por defecto, o ajústalo como prefieras */
+    transform: translate(-50%, -50%) rotateY(180deg);
+    width: 200px; /* Un poco más grande para darle presencia a la izquierda */
+    height: 220px;
+    opacity: 0.08; /* Ligeramente más visible que el 0.05 anterior */
+    pointer-events: none; /* Asegura que no interfiera con los clics */
+    z-index: 1; /* Mantenlo detrás del texto */
 }
