@@ -10,13 +10,21 @@
 
 /* Encabezado Oscuro (30%) */
 .darkHeader {
-    height: 35vh; /* Ajustable a 30-35% */
-    background-color: #252F4A; /* El color de tu diseño previo */
+    height: 35vh;
+    /* Un ángulo de 105deg a 110deg imita esa diagonal de Figma */
+    background: linear-gradient(
+            160deg,
+            #0E111B 0%,
+            #0E111B 70%,   /* Color oscuro sólido hasta el 70% */
+            #252F4A 90%,   /* Transición rápida */
+            #252F4A 100%
+    );
     position: relative;
     display: flex;
     align-items: center;
     padding: 0 6vw;
     z-index: 2;
+    overflow: hidden;
 }
 
 .headerContent {

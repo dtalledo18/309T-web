@@ -68,7 +68,7 @@ export default function LateralScroll() {
                 </div>
                 {/* Elemento decorativo flor */}
                 <div className={styles.flowerWrapper}>
-                    <Image src="/flower-outline.png" alt="" fill className={styles.flowerImg} />
+                    <Image src="/petal-1.webp" alt="" fill className={styles.flowerImg} />
                 </div>
             </div>
 

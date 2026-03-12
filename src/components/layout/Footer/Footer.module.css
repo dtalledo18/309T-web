@@ -1,5 +1,11 @@
 .footer {
-    background-color: #252F4A; /* Bluegray scale/900 exacto */
+    background: linear-gradient(
+            160deg,
+            #0E111B 0%,
+            #0E111B 70%,   /* Color oscuro sólido hasta el 70% */
+            #252F4A 90%,   /* Transición rápida */
+            #252F4A 100%
+    );
     padding: 80px 60px 40px 60px;
     color: #ffffff;
     position: relative;

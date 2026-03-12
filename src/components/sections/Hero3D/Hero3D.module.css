@@ -1,7 +1,7 @@
 .hero {
     height: 100vh;
     width: 100%;
-    background: radial-gradient(circle at center, #252f4a 0%, #131825 100%);
+    background: radial-gradient(circle at center, #252F4A 0%, #0E111B 100%);
     display: flex;
     flex-direction: column;
     align-items: center;

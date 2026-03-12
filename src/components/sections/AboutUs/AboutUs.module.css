@@ -32,16 +32,16 @@
     -webkit-mask-image: linear-gradient(
             to bottom,                /* Dirección: de arriba a abajo */
             rgba(0, 0, 0, 1) 0%,      /* 100% Opacidad arriba */
-            rgba(0, 0, 0, 0.3) 50%,   /* 50% Opacidad al medio (opcional) */
-            rgba(0, 0, 0, 0.1) 100%     /* 0% Opacidad abajo */
+            rgba(0, 0, 0, 0.3) 40%,   /* 50% Opacidad al medio (opcional) */
+            rgba(0, 0, 0, 0.1) 50%     /* 0% Opacidad abajo */
     );
 
     /* Estándar */
     mask-image: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.3) 50%,
-            rgba(0, 0, 0, 0.1) 100%
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0.1) 50%
     );
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;

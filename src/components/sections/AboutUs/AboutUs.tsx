@@ -56,7 +56,7 @@ export default function AboutUs() {
 
                 <div ref={imgWrapperRef} className={styles.imageWrapper}>
                     <Image
-                        src="/devices-mockup.png"
+                        src="/devices-mockup.webp"
                         alt="309T Interface on Laptop, Tablet and Mobile"
                         width={1400} // Ajusta según el tamaño original de tu PNG
                         height={1000}

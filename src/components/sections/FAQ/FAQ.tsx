@@ -28,7 +28,7 @@ export default function FAQ() {
         <section className={styles.section}>
             {/* Imagen decorativa de fondo (Flor/Unión) */}
             <div className={styles.bgDecor}>
-                <Image src="/union.png" alt="" width={600} height={600} priority />
+                <Image src="/union.webp" alt="" width={600} height={600} priority />
             </div>
 
             <div className={styles.container}>
@@ -47,7 +47,7 @@ export default function FAQ() {
                 <div className={styles.ctaWrapper}>
                     <div className={styles.imageContainer}>
                         <Image
-                            src="/hvac-roof.png"
+                            src="/hvac-roof-alt.webp"
                             alt="HVAC units on roof"
                             width={600}
                             height={450}
@@ -56,7 +56,7 @@ export default function FAQ() {
                     </div>
 
                     <div className={styles.ctaContent}>
-                        <h2 className={styles.ctaTitle}>START <span className={styles.blueText}>SAVING TIME</span> </h2>
+                        <h2 className={styles.ctaTitle}>START <br/> <span className={styles.blueText}>SAVING TIME</span> </h2>
                         <p className={styles.ctaText}>
                             Secure your spot in the <span className={styles.blueText}>next generation</span> of HVAC management.
                             The industry is moving to <span className={styles.blueText}>AI-driven workflows</span>.
