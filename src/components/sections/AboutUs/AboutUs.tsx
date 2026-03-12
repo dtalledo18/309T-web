@@ -44,7 +44,7 @@ export default function AboutUs() {
             <div className={styles.content}>
                 <div className={styles.flowerWrapper}>
                     <img
-                        src="/flower-outline-alt.png"
+                        src="/flower-outline-alt.webp"
                         alt=""
                         className={styles.flowerImg}
                     />

@@ -20,15 +20,33 @@
     transform: translate(-28%, -20%);
     pointer-events: none;
     max-width: none;
-    opacity: 0.3;
+    opacity: 0.5;
 }
 
 .flowerImg {
-    width: 1500px;  /* igual que el width del Image */
+    width: 1500px;
     max-width: none;
     height: auto;
     display: block;
     overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+            to bottom,                /* Dirección: de arriba a abajo */
+            rgba(0, 0, 0, 1) 0%,      /* 100% Opacidad arriba */
+            rgba(0, 0, 0, 0.3) 50%,   /* 50% Opacidad al medio (opcional) */
+            rgba(0, 0, 0, 0.1) 100%     /* 0% Opacidad abajo */
+    );
+
+    /* Estándar */
+    mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.1) 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 .description {
