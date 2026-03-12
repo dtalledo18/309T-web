@@ -50,6 +50,7 @@
     height: auto;
     opacity: 0.08;
     transform: scale(-1) rotate(15deg);
+    will-change: transform;
 }
 
 .pBottomLeft {

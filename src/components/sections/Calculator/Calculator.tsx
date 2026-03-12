@@ -1,9 +1,8 @@
 'use client';
-import { useState, useRef } from 'react';
+import {useState, useRef, useEffect} from 'react';
 import { useColorSwitch } from '@/hooks/useColorSwitch';
 import styles from './Calculator.module.css';
 import Image from "next/image";
-import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
 export default function Calculator() {
@@ -11,37 +10,38 @@ export default function Calculator() {
     const [reportVolume, setReportVolume] = useState(100);
     const [hourlyCost, setHourlyCost] = useState(100);
     const [hoursPerReport, setHoursPerReport] = useState(20);
-    const containerDecorRef = useRef<HTMLDivElement>(null); // Ref para el contenedor de pétalos
+    const p1 = useRef<HTMLDivElement>(null);
+    const p2 = useRef<HTMLDivElement>(null);
+    const p3 = useRef<HTMLDivElement>(null);
+    const p4 = useRef<HTMLDivElement>(null);
+    const p5 = useRef<HTMLDivElement>(null);
+    const p6 = useRef<HTMLDivElement>(null);
 
     useColorSwitch(sectionRef, '#252f4a', '#ffffff', 'top center');
 
-    useGSAP(() => {
-        const petals = gsap.utils.toArray(`.${styles.petalBase}`);
+    useEffect(() => {
+        const petals = [
+            { ref: p1, x: 45,  y: 55,  rot: 12, dur: 9  },
+            { ref: p2, x: 35,  y: 40,  rot: 15, dur: 7  },
+            { ref: p3, x: 50,  y: 35,  rot: 10, dur: 11 },
+            { ref: p4, x: 40,  y: 50,  rot: 14, dur: 8  },
+            { ref: p5, x: 30,  y: 45,  rot: 18, dur: 6  },
+            { ref: p6, x: 55,  y: 30,  rot: 8,  dur: 13 },
+        ];
 
-        petals.forEach((petal, i) => {
-            gsap.to(petal as HTMLElement, {
-                // Movimiento lateral y vertical mínimo y casi igual para todos
-                y: "random(-5, 5)",       // Solo 10px de recorrido total
-                x: "random(-3, 3)",       // Desplazamiento lateral casi nulo
-
-                // Eliminamos la rotación para que solo "floten"
-                rotation: 0,
-
-                // Duración muy larga y similar (entre 8 y 10 segundos)
-                // Esto hace que el ritmo sea constante en toda la pantalla
-                duration: `random(8, 10)`,
-
+        petals.forEach(({ ref, x, y, rot, dur }) => {
+            if (!ref.current) return;
+            gsap.to(ref.current, {
+                x: `+=${x}`,
+                y: `+=${y}`,
+                rotation: `+=${rot}`,
+                duration: dur,
+                ease: 'sine.inOut',
                 repeat: -1,
                 yoyo: true,
-                ease: "sine.inOut",
-
-                // Escalonamos el inicio para que no arranquen a la vez
-                delay: i * 0.4,
-
-                force3D: true
             });
         });
-    }, { scope: sectionRef });
+    }, []);
 
     // Nueva Fórmula: (A * C * B) - (A * D * B)
     // A = Monthly report volume (reportVolume)
@@ -57,23 +57,23 @@ export default function Calculator() {
     return (
         <section ref={sectionRef} className={styles.container} id="calculator">
 
-            <div ref={containerDecorRef} className={styles.decorBackground}>
-                <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
+            <div className={styles.decorBackground}>
+                <div ref={p1} className={`${styles.petalBase} ${styles.pTopLeft}`}>
                     <Image src="/petal-1.webp" alt="" width={475} height={554} />
                 </div>
-                <div className={`${styles.petalBase} ${styles.pTopCenter}`}>
+                <div ref={p2} className={`${styles.petalBase} ${styles.pTopCenter}`}>
                     <Image src="/petal-2.webp" alt="" width={205} height={222} />
                 </div>
-                <div className={`${styles.petalBase} ${styles.pTopRight}`}>
+                <div ref={p3} className={`${styles.petalBase} ${styles.pTopRight}`}>
                     <Image src="/petal-1.webp" alt="" width={475} height={554} />
                 </div>
-                <div className={`${styles.petalBase} ${styles.pBottomLeft}`}>
+                <div ref={p4} className={`${styles.petalBase} ${styles.pBottomLeft}`}>
                     <Image src="/petal-1.webp" alt="" width={475} height={554} />
                 </div>
-                <div className={`${styles.petalBase} ${styles.pMidLeft}`}>
+                <div ref={p5} className={`${styles.petalBase} ${styles.pMidLeft}`}>
                     <Image src="/petal-2.webp" alt="" width={205} height={222} />
                 </div>
-                <div className={`${styles.petalBase} ${styles.pBottomRight}`}>
+                <div ref={p6} className={`${styles.petalBase} ${styles.pBottomRight}`}>
                     <Image src="/petal-1.webp" alt="" width={475} height={554} />
                 </div>
             </div>
