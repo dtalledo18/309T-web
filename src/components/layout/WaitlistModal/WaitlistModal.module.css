@@ -24,15 +24,39 @@
     align-items: center;
 }
 
-.closeBtn{
+.closeBtn {
     cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
 }
+
+.closeBtn:hover { opacity: 1; }
 
 .title { margin: 0; font-size: 1.25rem; font-weight: 600; }
 
 .form { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Field group wraps input + error message */
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.errorMsg {
+    font-size: 0.78rem;
+    color: #dc2626;
+    padding-left: 4px;
+}
 
 .input, .textarea {
     width: 100%;
@@ -41,34 +65,24 @@
     border-radius: 12px;
     font-size: 0.95rem;
     color: #1f2937;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
-.select {
-    width: 100%;
-    padding: 12px 40px 12px 16px; /* Más padding a la derecha para la flecha */
-    border: 1px solid #d1d5db;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    appearance: none; /* Elimina la flecha nativa de HTML */
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center; /* Posiciona la flecha correctamente */
-    background-size: 18px;
-    background-color: white;
-    cursor: pointer;
-    color: #1f2937;
+.inputError {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
 }
 
-.select:invalid {
-    color: #9ca3af; /* Este es el color estándar de placeholder (gris claro) */
+.input::placeholder, .textarea::placeholder {
+    color: #9ca3af;
 }
 
-/* Estilo para las opciones dentro de la lista (para que vuelvan a ser negras) */
-.select option {
-    color: #1f2937;
-    background-color: white;
+.input:focus, .textarea:focus {
+    border-color: #1142c5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(17, 66, 197, 0.1);
 }
 
 /* Custom Dropdown */
@@ -90,7 +104,8 @@
     align-items: center;
     cursor: pointer;
     text-align: left;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
 }
 
 .dropdownTrigger:focus {
@@ -99,9 +114,7 @@
     box-shadow: 0 0 0 3px rgba(17, 66, 197, 0.1);
 }
 
-.placeholder {
-    color: #9ca3af;
-}
+.placeholder { color: #9ca3af; }
 
 .dropdownArrow {
     width: 18px;
@@ -111,9 +124,7 @@
     flex-shrink: 0;
 }
 
-.dropdownArrowOpen {
-    transform: rotate(180deg);
-}
+.dropdownArrowOpen { transform: rotate(180deg); }
 
 .dropdownMenu {
     position: absolute;
@@ -125,7 +136,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     padding: 6px;
     z-index: 9999;
-    max-height: 284px; /* ~6 items de 46px cada uno */
+    max-height: 284px;
     overflow-y: auto;
 }
 
@@ -143,11 +154,10 @@
     justify-content: space-between;
     align-items: center;
     transition: background 0.15s;
+    font-family: inherit;
 }
 
-.dropdownItem:hover {
-    background: #f0f4ff;
-}
+.dropdownItem:hover { background: #f0f4ff; }
 
 .dropdownItemActive {
     color: #1142c5;
@@ -162,22 +172,12 @@
     flex-shrink: 0;
 }
 
-/* Asegúrate de que tus otros inputs tengan el mismo color de placeholder */
-.input::placeholder, .textarea::placeholder {
-    color: #9ca3af;
-}
-
-.input:focus, .select:focus, .textarea:focus {
-    border-color: #1142c5;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(17, 66, 197, 0.1); /* Efecto de foco moderno */
-}
-
+/* Checkbox */
 .checkboxContainer {
     display: flex;
-    align-items: center; /* Centrado vertical exacto */
+    align-items: center;
     gap: 12px;
-    margin: 8px 0;
+    margin: 4px 0;
     cursor: pointer;
 }
 
@@ -187,20 +187,18 @@
     border-radius: 4px;
     border: 1px solid #d1d5db;
     cursor: pointer;
-    accent-color: #1142c5; /* Color azul para el check cuando esté marcado */
-    flex-shrink: 0; /* Evita que el checkbox se aplaste si el texto es largo */
+    accent-color: #1142c5;
+    flex-shrink: 0;
 }
 
 .checkboxText {
     font-size: 0.85rem;
     color: #4b5563;
-    line-height: 1; /* Ajustado para mejor alineación visual */
+    line-height: 1.4;
     user-select: none;
 }
 
-.checkboxText { font-size: 0.85rem; color: #4b5563; line-height: 1.4; }
-
-/* Estilo reCAPTCHA */
+/* reCAPTCHA */
 .captchaBox {
     background: #f9f9f9;
     border: 1px solid #d1d5db;
@@ -209,12 +207,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8px 0;
+    transition: border-color 0.2s;
+}
+
+.captchaBoxError {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
 .captchaLeft { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #000; }
 
-.captchaCheck { width: 24px; height: 24px; cursor: pointer; }
+.captchaCheck { width: 24px; height: 24px; cursor: pointer; accent-color: #1142c5; }
 
 .captchaRight { display: flex; flex-direction: column; align-items: center; }
 
@@ -224,9 +227,20 @@
 
 .captchaLinks { font-size: 0.6rem; color: #777; }
 
-/* Botón llamativo estilo 309T */
+/* Error banner (API errors) */
+.errorBanner {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+/* Submit button */
 .submitBtn {
-    background: #ccff00; /* Color limón neón */
+    background: #ccff00;
     color: #000;
     border: none;
     padding: 16px;
@@ -234,11 +248,56 @@
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s, background 0.2s, opacity 0.2s;
     margin-top: 8px;
+    font-family: inherit;
 }
 
-.submitBtn:hover { transform: translateY(-2px); background: #b5e600; }
+.submitBtn:hover:not(:disabled) { transform: translateY(-2px); background: #b5e600; }
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Success screen */
+.successBody {
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    background: #ccff00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.successTitle {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.successText {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
 
 @keyframes slideIn {
     from { transform: translateX(120%) scale(0.9); opacity: 0; }

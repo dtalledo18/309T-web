@@ -1,8 +1,10 @@
 .header {
+
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+
     width: 90%;
     max-width: 1200px;
     height: 72px;
@@ -19,94 +21,212 @@
             rgba(255,255,255,0.12)
     );
 
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
     backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
 
     border: 1px solid rgba(255,255,255,0.15);
-
     border-radius: 50px;
 
     transition:
-            width 0.5s cubic-bezier(.22,1,.36,1),
-            height 0.5s cubic-bezier(.22,1,.36,1),
-            padding 0.5s cubic-bezier(.22,1,.36,1),
-            border-radius 0.5s cubic-bezier(.22,1,.36,1),
-            background 0.5s ease;
+            width .5s cubic-bezier(.22,1,.36,1),
+            height .5s cubic-bezier(.22,1,.36,1),
+            padding .5s cubic-bezier(.22,1,.36,1),
+            border-radius .5s cubic-bezier(.22,1,.36,1),
+            background .5s ease;
 
     z-index: 1000;
+
 }
 
-.rightSide{
-    display:flex;
-    align-items:center;
-    gap:40px;
+/* RIGHT SIDE */
+
+.rightSide {
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
 }
 
-/* Estado normal: logo blanco */
+/* LOGO */
+
 .logo {
+
     width: 34px;
     height: 34px;
-    /* Mantenemos el transform suave, pero el filter lo hacemos tipo "pop" */
+
     transition:
             transform .7s cubic-bezier(.22,1,.36,1),
-            filter 0.2s ease-in-out;
-    transform: rotate(0deg);
-    filter: brightness(0) invert(1); /* Blanco puro */
+            filter .3s ease;
+
+    /* default blanco */
+
+    filter: brightness(0) invert(1);
+
 }
 
-/* Estado compact: giro y cambio de color controlado */
-.compact .logo {
-    /* Aplicamos el filtro azul con un pequeño retraso para que cambie
-       justo cuando el logo está a mitad de camino del giro */
-    transition-delay: 0.25s;
+/* LOGO AZUL (cuando pasa el hero) */
 
-    filter: brightness(0) saturate(100%) invert(28%) sepia(71%) saturate(2156%) hue-rotate(213deg) brightness(89%) contrast(100%);
+.pastHero .logo {
+
+    filter: brightness(0)
+    saturate(100%)
+    invert(28%)
+    sepia(71%)
+    saturate(2156%)
+    hue-rotate(213deg)
+    brightness(89%)
+    contrast(100%);
+
     transform: rotate(360deg);
+
 }
 
-.nav{
-    display:flex;
-    gap:60px;
-    transition: opacity .35s ease, transform .35s ease;
+/* NAV */
+
+.nav {
+
+    display: flex;
+    gap: 60px;
+
+    transition:
+            opacity .35s ease,
+            transform .35s ease;
+
 }
 
-.nav a{
-    color:white;
-    font-size:15px;
-    font-weight:500;
+.nav a {
+
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+
 }
 
-.btnWaitlist{
-    background:#DFFF00;
-    color:#000;
-    padding:10px 22px;
-    border-radius:22px;
-    font-weight:700;
-    font-size:13px;
+/* BUTTON */
+
+.btnWaitlist {
+
+    background: #DFFF00;
+    color: #000;
+
+    padding: 10px 22px;
+
+    border-radius: 22px;
+
+    font-weight: 700;
+    font-size: 13px;
+
     cursor: pointer;
-}
-.compact{
-
-    width:233px;
-    height:64px;
-
-    padding:0 18px;
-
-    background: linear-gradient(
-            180deg,
-            rgba(255,255,255,0.1),
-            rgba(255,255,255,0.12)
-    );
-
-    border:1px solid rgba(0,0,0,0.08);
-
-    box-shadow:
-            0 10px 40px rgba(0,0,0,0.08);
+    white-space: nowrap;
 
 }
 
-.compact .nav{
-    opacity:0;
-    transform:translateY(-10px);
-    pointer-events:none;
+/* COMPACT HEADER */
+
+.compact {
+
+    width: 233px;
+    height: 64px;
+    padding: 0 18px;
+
+    border: 1px solid rgba(0,0,0,0.08);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+
+}
+
+/* OCULTAR NAV CUANDO ES COMPACT */
+
+.compact .nav {
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+}
+
+/* TABLET */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+
+    .header {
+
+        width: 92%;
+        height: 66px;
+        padding: 0 24px;
+
+    }
+
+    .nav {
+
+        gap: 32px;
+
+    }
+
+    .nav a {
+
+        font-size: 14px;
+
+    }
+
+    .btnWaitlist {
+
+        padding: 9px 18px;
+        font-size: 12px;
+
+    }
+
+    .compact {
+
+        width: 220px;
+        height: 58px;
+
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .header {
+
+        width: 220px;
+        height: 56px;
+
+        top: 30px;
+
+    }
+
+    .mobile {
+
+        width: 220px;
+        height: 56px;
+        padding: 0 16px;
+
+        box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+
+    }
+
+    .logo {
+
+        width: 28px;
+        height: 28px;
+
+    }
+
+    .rightSide {
+
+        gap: 12px;
+
+    }
+
+    .btnWaitlist {
+
+        padding: 8px 16px;
+        font-size: 12px;
+
+    }
+
 }

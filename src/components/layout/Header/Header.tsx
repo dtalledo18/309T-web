@@ -1,38 +1,85 @@
 'use client';
+
 import { useEffect, useState } from "react";
 import { useWaitlist } from "@/components/context/WaitlistContext";
 import styles from './Header.module.css';
 
 export default function Header() {
+
     const { openWaitlist } = useWaitlist();
+
     const [isCompact, setIsCompact] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isPastHero, setIsPastHero] = useState(false);
 
+    /* Detectar mobile */
     useEffect(() => {
-        let ticking = false;
 
-        const handleScroll = () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const trigger = document.getElementById("about");
-                    if (trigger) {
-                        const rect = trigger.getBoundingClientRect();
-                        setIsCompact(rect.top <= 90);
-                    }
-                    ticking = false;
-                });
-                ticking = true;
+        const checkMobile = () => {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+
+            if (mobile) {
+                setIsCompact(true);
             }
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+
     }, []);
 
+    /* Detectar scroll */
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            const trigger = document.getElementById("about");
+
+            if (!trigger) return;
+
+            const rect = trigger.getBoundingClientRect();
+
+            const past = rect.top <= 90;
+
+            setIsPastHero(past);
+
+            if (!isMobile) {
+                setIsCompact(past);
+            }
+
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+
+    }, [isMobile]);
+
+
     return (
-        <header className={`${styles.header} ${isCompact ? styles.compact : ''}`}>
-            <img src="/logo.svg" alt="309T Logo" className={styles.logo} />
+
+        <header
+            className={`
+                ${styles.header}
+                ${isCompact ? styles.compact : ""}
+                ${isMobile ? styles.mobile : ""}
+                ${isPastHero ? styles.pastHero : ""}
+            `}
+        >
+
+            <img
+                src="/logo.svg"
+                alt="309T Logo"
+                className={styles.logo}
+            />
+
             <div className={styles.rightSide}>
+
                 {!isCompact && (
+
                     <nav className={styles.nav}>
                         <a href="#about">About us</a>
                         <a href="#calculator">Calculator</a>
@@ -40,11 +87,20 @@ export default function Header() {
                         <a href="#values">Values</a>
                         <a href="#faq">FAQ</a>
                     </nav>
+
                 )}
-                <button className={styles.btnWaitlist} onClick={openWaitlist}>
+
+                <button
+                    className={styles.btnWaitlist}
+                    onClick={openWaitlist}
+                >
                     Join the Waitlist
                 </button>
+
             </div>
+
         </header>
+
     );
+
 }
