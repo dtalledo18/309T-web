@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import {useEffect, useRef} from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import styles from './Metrics.module.css';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,33 +98,37 @@ export default function Metrics() {
         const cardsTrack = cardsTrackRef.current;
         if (!pinContainer || !cardsTrack) return;
 
-        const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
-        const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
-        const sectionHeight = pinContainer.offsetHeight;
-        const cardHeight = cards[0].offsetHeight;
-        const centerOffset = (sectionHeight - cardHeight) / 2;
+        requestAnimationFrame(() => {
+            // 1. SOLO LECTURAS primero
+            const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
+            const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
+            const sectionHeight = pinContainer.offsetHeight;
+            const cardHeight = cards[0].offsetHeight;
+            const centerOffset = (sectionHeight - cardHeight) / 2;
+            const totalMovement = (cardHeight + gap) * (cards.length - 1);
 
-        cardsTrack.style.paddingTop = `${centerOffset}px`;
-        cardsTrack.style.paddingBottom = `${centerOffset}px`;
+            // 2. SOLO ESCRITURAS después
+            cardsTrack.style.paddingTop = `${centerOffset}px`;
+            cardsTrack.style.paddingBottom = `${centerOffset}px`;
+            pinContainer.style.marginBottom = `${totalMovement}px`;
 
-        const totalMovement = (cardHeight + gap) * (cards.length - 1);
+            // 3. GSAP al final
+            gsap.to(cardsTrack, {
+                y: -totalMovement,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: pinContainer,
+                    start: "center center",
+                    end: "+=" + totalMovement,
+                    scrub: 1,
+                    pin: true,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    pinSpacing: false,
+                },
+            });
 
-
-        pinContainer.style.marginBottom = `${totalMovement}px`;
-
-        gsap.to(cardsTrack, {
-            y: -totalMovement,
-            ease: "none",
-            scrollTrigger: {
-                trigger: pinContainer,
-                start: "center center",
-                end: "+=" + totalMovement,
-                scrub: 1,
-                pin: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                pinSpacing: false,
-            },
+            ScrollTrigger.refresh();
         });
     }, { scope: pinContainerRef });
 

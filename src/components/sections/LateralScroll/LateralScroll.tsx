@@ -3,9 +3,9 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import styles from './LateralScroll.module.css';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,23 +60,22 @@ export default function LateralScroll() {
         const cardsTrack = cardsTrackRef.current;
         if (!pinContainer || !cardsTrack) return;
 
-        // Calculamos el desplazamiento: ancho total del track menos lo que ya vemos en pantalla
-        const getScrollAmount = () => {
-            return cardsTrack.scrollWidth - window.innerWidth;
-        };
+        requestAnimationFrame(() => {
+            // Lee UNA sola vez
+            const scrollAmount = cardsTrack.scrollWidth - window.innerWidth;
 
-        gsap.to(cardsTrack, {
-            x: () => -(cardsTrack.scrollWidth - window.innerWidth),
-            ease: "none",
-            scrollTrigger: {
-                trigger: pinContainer,
-                start: "top top",
-                // Multiplicamos por la cantidad de cards para que el scroll se sienta natural
-                end: () => `+=${cardsTrack.scrollWidth}`,
-                scrub: 1,
-                pin: true,
-                invalidateOnRefresh: true,
-            }
+            gsap.to(cardsTrack, {
+                x: -scrollAmount,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: pinContainer,
+                    start: "top top",
+                    end: `+=${cardsTrack.scrollWidth}`,
+                    scrub: 1,
+                    pin: true,
+                    invalidateOnRefresh: true,
+                }
+            });
         });
     }, { scope: pinContainerRef });
 
