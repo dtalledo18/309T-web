@@ -3,14 +3,45 @@ import { useState, useRef } from 'react';
 import { useColorSwitch } from '@/hooks/useColorSwitch';
 import styles from './Calculator.module.css';
 import Image from "next/image";
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
 
 export default function Calculator() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const [reportVolume, setReportVolume] = useState(100);
     const [hourlyCost, setHourlyCost] = useState(100);
     const [hoursPerReport, setHoursPerReport] = useState(20);
+    const containerDecorRef = useRef<HTMLDivElement>(null); // Ref para el contenedor de pétalos
 
     useColorSwitch(sectionRef, '#252f4a', '#ffffff', 'top center');
+
+    useGSAP(() => {
+        const petals = gsap.utils.toArray(`.${styles.petalBase}`);
+
+        petals.forEach((petal, i) => {
+            gsap.to(petal as HTMLElement, {
+                // Movimiento lateral y vertical mínimo y casi igual para todos
+                y: "random(-5, 5)",       // Solo 10px de recorrido total
+                x: "random(-3, 3)",       // Desplazamiento lateral casi nulo
+
+                // Eliminamos la rotación para que solo "floten"
+                rotation: 0,
+
+                // Duración muy larga y similar (entre 8 y 10 segundos)
+                // Esto hace que el ritmo sea constante en toda la pantalla
+                duration: `random(8, 10)`,
+
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+
+                // Escalonamos el inicio para que no arranquen a la vez
+                delay: i * 0.4,
+
+                force3D: true
+            });
+        });
+    }, { scope: sectionRef });
 
     // Nueva Fórmula: (A * C * B) - (A * D * B)
     // A = Monthly report volume (reportVolume)
@@ -26,7 +57,7 @@ export default function Calculator() {
     return (
         <section ref={sectionRef} className={styles.container} id="calculator">
 
-            <div className={styles.decorBackground}>
+            <div ref={containerDecorRef} className={styles.decorBackground}>
                 <div className={`${styles.petalBase} ${styles.pTopLeft}`}>
                     <Image src="/petal-1.webp" alt="" width={475} height={554} />
                 </div>
