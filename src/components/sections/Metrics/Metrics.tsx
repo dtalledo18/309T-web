@@ -71,12 +71,12 @@ export default function Metrics() {
 
     useEffect(() => {
         const petals = [
-            { ref: p1, x: 45, y: 55, rot: 12, dur: 10 },
-            { ref: p2, x: 30, y: 35, rot: 15, dur: 7  },
-            { ref: p3, x: 50, y: 30, rot: 10, dur: 12 },
-            { ref: p4, x: 40, y: 50, rot: 14, dur: 8  },
-            { ref: p5, x: 25, y: 40, rot: 18, dur: 6  },
-            { ref: p6, x: 55, y: 25, rot: 8,  dur: 14 },
+            { ref: p1, x: 90,  y: 110, rot: 22, dur: 10 },
+            { ref: p2, x: 70,  y: 80,  rot: 28, dur: 7  },
+            { ref: p3, x: 100, y: 70,  rot: 18, dur: 12 },
+            { ref: p4, x: 85,  y: 100, rot: 25, dur: 8  },
+            { ref: p5, x: 60,  y: 90,  rot: 32, dur: 6  },
+            { ref: p6, x: 110, y: 60,  rot: 15, dur: 14 },
         ];
 
         petals.forEach(({ ref, x, y, rot, dur }) => {

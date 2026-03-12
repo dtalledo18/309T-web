@@ -21,12 +21,12 @@ export default function Calculator() {
 
     useEffect(() => {
         const petals = [
-            { ref: p1, x: 45,  y: 55,  rot: 12, dur: 9  },
-            { ref: p2, x: 35,  y: 40,  rot: 15, dur: 7  },
-            { ref: p3, x: 50,  y: 35,  rot: 10, dur: 11 },
-            { ref: p4, x: 40,  y: 50,  rot: 14, dur: 8  },
-            { ref: p5, x: 30,  y: 45,  rot: 18, dur: 6  },
-            { ref: p6, x: 55,  y: 30,  rot: 8,  dur: 13 },
+            { ref: p1, x: 90,  y: 110, rot: 22, dur: 9  },
+            { ref: p2, x: 75,  y: 85,  rot: 28, dur: 7  },
+            { ref: p3, x: 100, y: 75,  rot: 18, dur: 11 },
+            { ref: p4, x: 85,  y: 100, rot: 25, dur: 8  },
+            { ref: p5, x: 65,  y: 90,  rot: 32, dur: 6  },
+            { ref: p6, x: 110, y: 65,  rot: 15, dur: 13 },
         ];
 
         petals.forEach(({ ref, x, y, rot, dur }) => {

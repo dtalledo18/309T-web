@@ -36,9 +36,9 @@ export default function LateralScroll() {
 
     useEffect(() => {
         const petals = [
-            { ref: petal1Ref, x: 40, y: 50, rot: 10, dur: 10 },
-            { ref: petal2Ref, x: 25, y: 35, rot: 14, dur: 7  },
-            { ref: petal3Ref, x: 50, y: 30, rot: 8,  dur: 13 },
+            { ref: petal1Ref, x: 90,  y: 110, rot: 22, dur: 10 },
+            { ref: petal2Ref, x: 70,  y: 80,  rot: 28, dur: 7  },
+            { ref: petal3Ref, x: 100, y: 70,  rot: 18, dur: 13 },
         ];
 
         petals.forEach(({ ref, x, y, rot, dur }) => {
