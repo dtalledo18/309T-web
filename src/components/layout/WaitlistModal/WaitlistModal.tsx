@@ -37,7 +37,7 @@ interface FormErrors {
 
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
 
-const API_URL = 'https://api-hvacai-dev.309technology.com/api/administration/waitlist';
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export default function WaitlistModal() {
     const { isOpen, closeWaitlist } = useWaitlist();
