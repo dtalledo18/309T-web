@@ -88,17 +88,17 @@ export default function LateralScroll() {
             return;
         }
 
-        const scrollAmount = cardsTrack.scrollWidth - pinContainer.offsetWidth;
+        const scrollAmount = cardsTrack.scrollWidth - window.innerWidth;
 
         const tween = gsap.to(cardsTrack, {
-            x: -scrollAmount,
+            x: () => -(cardsTrack.scrollWidth - window.innerWidth),
             ease: "none"
         });
 
         scrollTriggerRef.current = ScrollTrigger.create({
             trigger: pinContainer,
             start: "top top",
-            end: `+=${scrollAmount}`,
+            end: () => "+=" + (cardsTrack.scrollWidth - window.innerWidth),
             scrub: 1,
             pin: true,
             anticipatePin: 1,
