@@ -1,6 +1,7 @@
 'use client';
+
 import Image from 'next/image';
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import styles from './Metrics.module.css';
@@ -22,7 +23,7 @@ const CARDS = [
         content: (
             <>
                 <div className={styles.deviceIcon}>
-                    <Image src="/icons/devices.webp" alt="Shield" width={180} height={180} />
+                    <Image src="/icons/devices.webp" alt="Devices" width={180} height={180} />
                 </div>
                 <p className={styles.cardText}>
                     <strong>A robust multi-platform User Experience ecosystem.</strong>
@@ -35,7 +36,7 @@ const CARDS = [
         content: (
             <>
                 <div className={styles.worldIcon}>
-                    <Image src="/icons/world_heart.webp" alt="Shield" width={150} height={150} />
+                    <Image src="/icons/world_heart.webp" alt="World" width={150} height={150} />
                 </div>
                 <p className={styles.cardText}>
                     <strong>Algorithm speed with human expertise.</strong>
@@ -60,8 +61,12 @@ const CARDS = [
 ];
 
 export default function Metrics() {
+
+    const [isMobile, setIsMobile] = useState(false);
+
     const pinContainerRef = useRef<HTMLDivElement>(null);
     const cardsTrackRef = useRef<HTMLDivElement>(null);
+
     const p1 = useRef<HTMLDivElement>(null);
     const p2 = useRef<HTMLDivElement>(null);
     const p3 = useRef<HTMLDivElement>(null);
@@ -69,18 +74,38 @@ export default function Metrics() {
     const p5 = useRef<HTMLDivElement>(null);
     const p6 = useRef<HTMLDivElement>(null);
 
+    /* Detect mobile/tablet */
+
     useEffect(() => {
+
+        const check = () => {
+            setIsMobile(window.innerWidth <= 1024);
+        };
+
+        check();
+        window.addEventListener('resize', check);
+
+        return () => window.removeEventListener('resize', check);
+
+    }, []);
+
+    /* Petals animation (siempre activa) */
+
+    useEffect(() => {
+
         const petals = [
-            { ref: p1, x: 90,  y: 110, rot: 22, dur: 10 },
-            { ref: p2, x: 70,  y: 80,  rot: 28, dur: 7  },
-            { ref: p3, x: 100, y: 70,  rot: 18, dur: 12 },
-            { ref: p4, x: 85,  y: 100, rot: 25, dur: 8  },
-            { ref: p5, x: 60,  y: 90,  rot: 32, dur: 6  },
-            { ref: p6, x: 110, y: 60,  rot: 15, dur: 14 },
+            { ref: p1, x: 90, y: 110, rot: 22, dur: 10 },
+            { ref: p2, x: 70, y: 80, rot: 28, dur: 7 },
+            { ref: p3, x: 100, y: 70, rot: 18, dur: 12 },
+            { ref: p4, x: 85, y: 100, rot: 25, dur: 8 },
+            { ref: p5, x: 60, y: 90, rot: 32, dur: 6 },
+            { ref: p6, x: 110, y: 60, rot: 15, dur: 14 },
         ];
 
         petals.forEach(({ ref, x, y, rot, dur }) => {
+
             if (!ref.current) return;
+
             gsap.to(ref.current, {
                 x: `+=${x}`,
                 y: `+=${y}`,
@@ -90,82 +115,160 @@ export default function Metrics() {
                 repeat: -1,
                 yoyo: true,
             });
+
         });
+
     }, []);
 
+    /* Scroll animation SOLO desktop */
+
     useGSAP(() => {
+
         const pinContainer = pinContainerRef.current;
         const cardsTrack = cardsTrackRef.current;
-        if (!pinContainer || !cardsTrack) return;
 
-        requestAnimationFrame(() => {
-            // 1. SOLO LECTURAS primero
-            const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
-            const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
-            const sectionHeight = pinContainer.offsetHeight;
-            const cardHeight = cards[0].offsetHeight;
-            const centerOffset = (sectionHeight - cardHeight) / 2;
-            const totalMovement = (cardHeight + gap) * (cards.length - 1);
+        if (!pinContainer) return;
 
-            // 2. SOLO ESCRITURAS después
-            cardsTrack.style.paddingTop = `${centerOffset}px`;
-            cardsTrack.style.paddingBottom = `${centerOffset}px`;
-            pinContainer.style.marginBottom = `${totalMovement}px`;
+        /* MOBILE / TABLET */
+        if (isMobile) {
 
-            // 3. GSAP al final
-            gsap.to(cardsTrack, {
-                y: -totalMovement,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: pinContainer,
-                    start: "center center",
-                    end: "+=" + totalMovement,
-                    scrub: 1,
-                    pin: true,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                    pinSpacing: false,
-                },
-            });
+            pinContainer.style.marginBottom = "0px";
 
-            ScrollTrigger.refresh();
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+            return;
+        }
+
+        /* DESKTOP */
+
+        if (!cardsTrack) return;
+
+        const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
+
+        const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
+
+        const sectionHeight = pinContainer.offsetHeight;
+
+        const cardHeight = cards[0].offsetHeight;
+
+        const centerOffset = (sectionHeight - cardHeight) / 2;
+
+        const totalMovement = (cardHeight + gap) * (cards.length - 1);
+
+        cardsTrack.style.paddingTop = `${centerOffset}px`;
+        cardsTrack.style.paddingBottom = `${centerOffset}px`;
+
+        pinContainer.style.marginBottom = `${totalMovement}px`;
+
+        gsap.to(cardsTrack, {
+
+            y: -totalMovement,
+            ease: "none",
+
+            scrollTrigger: {
+
+                trigger: pinContainer,
+                start: "center center",
+                end: "+=" + totalMovement,
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1,
+                pinSpacing: false
+
+            }
+
         });
-    }, { scope: pinContainerRef });
+
+    }, [isMobile]);
 
     return (
+
         <section ref={pinContainerRef} className={styles.section} id="values">
+
+            {/* PETALS */}
+
             <div ref={p1} className={`${styles.petalBase} ${styles.pTopLeft}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
-            </div>
-            <div ref={p2} className={`${styles.petalBase} ${styles.pTopCenter}`}>
-                <Image src="/petal-2.webp" alt="" width={205} height={222} loading="lazy"/>
-            </div>
-            <div ref={p3} className={`${styles.petalBase} ${styles.pTopRight}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
-            </div>
-            <div ref={p4} className={`${styles.petalBase} ${styles.pBottomLeft}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
-            </div>
-            <div ref={p5} className={`${styles.petalBase} ${styles.pMidLeft}`}>
-                <Image src="/petal-2.webp" alt="" width={205} height={222} loading="lazy"/>
-            </div>
-            <div ref={p6} className={`${styles.petalBase} ${styles.pBottomRight}`}>
-                <Image src="/petal-1.webp" alt="" width={475} height={554} loading="lazy"/>
+                <Image src="/petal-1.webp" alt="" width={475} height={554}/>
             </div>
 
-            <div className={styles.viewport}>
-                <div ref={cardsTrackRef} className={styles.cardsTrack}>
+            <div ref={p2} className={`${styles.petalBase} ${styles.pTopCenter}`}>
+                <Image src="/petal-2.webp" alt="" width={205} height={222}/>
+            </div>
+
+            <div ref={p3} className={`${styles.petalBase} ${styles.pTopRight}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554}/>
+            </div>
+
+            <div ref={p4} className={`${styles.petalBase} ${styles.pBottomLeft}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554}/>
+            </div>
+
+            <div ref={p5} className={`${styles.petalBase} ${styles.pMidLeft}`}>
+                <Image src="/petal-2.webp" alt="" width={205} height={222}/>
+            </div>
+
+            <div ref={p6} className={`${styles.petalBase} ${styles.pBottomRight}`}>
+                <Image src="/petal-1.webp" alt="" width={475} height={554}/>
+            </div>
+
+
+            {/* DESKTOP SCROLL */}
+
+            {!isMobile && (
+
+                <div className={styles.viewport}>
+
+                    <div ref={cardsTrackRef} className={styles.cardsTrack}>
+
+                        {CARDS.map((card, i) => (
+                            <div key={i} className={styles.card}>
+                                {card.content}
+                            </div>
+                        ))}
+
+                    </div>
+
+                </div>
+
+            )}
+
+
+            {/* MOBILE STACK */}
+
+            {isMobile && (
+
+                <div className={styles.mobileStack}>
+
+                    <h2 className={styles.mainTitle}>
+                        THE <span className={styles.blueText}>309T</span>
+                        <br/>STANDARD
+                    </h2>
+
                     {CARDS.map((card, i) => (
-                        <div key={i} className={styles.card}>
+                        <div key={i} className={styles.cardMobile}>
                             {card.content}
                         </div>
                     ))}
-                </div>
-            </div>
 
-            <div className={styles.titleSide}>
-                <h2 className={styles.mainTitle}>THE <span className={styles.blueText}>309T</span><br />STANDARD</h2>
-            </div>
+                </div>
+
+            )}
+
+
+            {/* TITLE DESKTOP */}
+
+            {!isMobile && (
+
+                <div className={styles.titleSide}>
+                    <h2 className={styles.mainTitle}>
+                        THE <span className={styles.blueText}>309T</span>
+                        <br/>STANDARD
+                    </h2>
+                </div>
+
+            )}
+
         </section>
+
     );
 }
