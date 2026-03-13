@@ -70,11 +70,12 @@ export default function Hero3D() {
                     <h1 className={styles.title}>
                         From Weeks <span className="italic font-light">to Minutes</span>
                     </h1>
+
+                </div>
+                <div>
                     <p className={styles.subtitle}>
                         Reduce HVAC reporting time and empower your team with the industry's fastest digital workflow.
                     </p>
-                </div>
-                <div>
                     <button onClick={scrollToAbout} className="mt-10 px-8 py-3 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform">
                         Explore 309T
                     </button>
