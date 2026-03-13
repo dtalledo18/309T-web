@@ -133,3 +133,87 @@
         text-align: center;
     }
 }
+
+/* TABLET */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .footer {
+        padding: 60px 40px 32px 40px;
+    }
+
+    .topGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 60px;
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .legal {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .footer {
+        padding: 48px 24px 32px 24px;
+    }
+
+    .topGrid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-bottom: 48px;
+    }
+
+    .brandName {
+        font-size: 1.8rem;
+    }
+
+    .slogan {
+        font-size: 1rem;
+    }
+
+    .navCol h4 {
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+    }
+
+    .navCol ul {
+        gap: 12px;
+    }
+
+    .navCol li {
+        font-size: 0.95rem;
+    }
+
+    .bottomBar {
+        flex-direction: column;
+        gap: 20px;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .legal {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.85rem;
+        align-items: flex-start;
+    }
+
+    .legal span, .legal a {
+        text-align: left;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .waitlistBtn {
+        display: none;
+    }
+}
