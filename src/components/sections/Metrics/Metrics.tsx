@@ -123,63 +123,61 @@ export default function Metrics() {
     /* Scroll animation SOLO desktop */
 
     useGSAP(() => {
-
         const pinContainer = pinContainerRef.current;
         const cardsTrack = cardsTrackRef.current;
 
         if (!pinContainer) return;
 
-        /* MOBILE / TABLET */
+        /* MOBILE / TABLET — solo limpia estilos, no toca otros ScrollTriggers */
         if (isMobile) {
-
-            pinContainer.style.marginBottom = "0px";
-
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
+            pinContainer.style.marginBottom = '';
+            if (cardsTrack) {
+                cardsTrack.style.paddingTop = '';
+                cardsTrack.style.paddingBottom = '';
+                cardsTrack.style.transform = '';
+            }
             return;
         }
 
         /* DESKTOP */
-
         if (!cardsTrack) return;
 
-        const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
+        let st: ScrollTrigger | undefined;
 
-        const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
+        requestAnimationFrame(() => {
+            const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[];
+            const gap = parseFloat(getComputedStyle(cardsTrack).rowGap || "100");
+            const sectionHeight = pinContainer.offsetHeight;
+            const cardHeight = cards[0].offsetHeight;
+            const centerOffset = (sectionHeight - cardHeight) / 2;
+            const totalMovement = (cardHeight + gap) * (cards.length - 1);
 
-        const sectionHeight = pinContainer.offsetHeight;
+            cardsTrack.style.paddingTop = `${centerOffset}px`;
+            cardsTrack.style.paddingBottom = `${centerOffset}px`;
+            pinContainer.style.marginBottom = `${totalMovement}px`;
 
-        const cardHeight = cards[0].offsetHeight;
+            gsap.to(cardsTrack, {
+                y: -totalMovement,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: pinContainer,
+                    start: "center center",
+                    end: "+=" + totalMovement,
+                    scrub: 1,
+                    pin: true,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    pinSpacing: false,
+                    onToggle: (self) => { st = self; }
+                },
+            });
 
-        const centerOffset = (sectionHeight - cardHeight) / 2;
-
-        const totalMovement = (cardHeight + gap) * (cards.length - 1);
-
-        cardsTrack.style.paddingTop = `${centerOffset}px`;
-        cardsTrack.style.paddingBottom = `${centerOffset}px`;
-
-        pinContainer.style.marginBottom = `${totalMovement}px`;
-
-        gsap.to(cardsTrack, {
-
-            y: -totalMovement,
-            ease: "none",
-
-            scrollTrigger: {
-
-                trigger: pinContainer,
-                start: "center center",
-                end: "+=" + totalMovement,
-                scrub: 1,
-                pin: true,
-                anticipatePin: 1,
-                pinSpacing: false
-
-            }
-
+            ScrollTrigger.refresh();
         });
 
-    }, [isMobile]);
+        return () => { st?.kill(); };
+
+    }, { scope: pinContainerRef, dependencies: [isMobile] });
 
     return (
 
