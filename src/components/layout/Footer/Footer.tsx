@@ -1,8 +1,11 @@
 'use client';
 import Image from 'next/image';
 import styles from './Footer.module.css';
+import {useWaitlist} from "@/components/context/WaitlistContext";
 
 export default function Footer() {
+
+    const { openWaitlist } = useWaitlist();
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
@@ -59,7 +62,7 @@ export default function Footer() {
                         <span className={styles.separator}>|</span>
                         <a href="#">Terms of Service</a>
                     </div>
-                    <button className={styles.waitlistBtn}>
+                    <button onClick={openWaitlist} className={styles.waitlistBtn}>
                         Join the Waitlist
                     </button>
                 </div>
