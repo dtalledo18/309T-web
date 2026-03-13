@@ -197,3 +197,111 @@
     pointer-events: none; /* Asegura que no interfiera con los clics */
     z-index: 1; /* Mantenlo detrás del texto */
 }
+
+/* ── MOBILE / TABLET estático ── */
+.mobileSection {
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobileDarkHeader {
+    background: linear-gradient(160deg, #0E111B 0%, #0E111B 70%, #252F4A 90%, #252F4A 100%);
+    padding: 48px 24px;
+    display: flex;
+    align-items: center;
+}
+
+.mobileCardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 20px 48px 20px;
+    background: #ffffff;
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .mobileDarkHeader {
+        padding: 56px 40px;
+    }
+
+    .mainTitle {
+        font-size: 2.8rem;
+    }
+
+    .mobileCardsContainer {
+        padding: 40px 32px 60px 32px;
+        gap: 24px;
+    }
+
+    .card {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 180px;
+    }
+
+    .cardTitle {
+        font-size: 2.5rem;
+    }
+
+    .cardContent p {
+        font-size: 1.2rem;
+    }
+
+    .iconRelativeContainer {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .mobileDarkHeader {
+        padding: 40px 24px;
+        min-height: 160px;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+    }
+
+    .mobileCardsContainer {
+        padding: 24px 16px 40px 16px;
+        gap: 16px;
+    }
+
+    .card {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 140px;
+    }
+
+    .cardIcon {
+        width: 35%;
+        padding: 16px;
+    }
+
+    .iconRelativeContainer {
+        width: 80px;
+        height: 80px;
+    }
+
+    .cardTitle {
+        font-size: 1.8rem;
+        margin-top: 8px;
+    }
+
+    .cardContent {
+        width: 65%;
+        padding: 16px 16px 16px 8px;
+    }
+
+    .cardContent p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+}

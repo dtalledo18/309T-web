@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -33,6 +33,14 @@ export default function LateralScroll() {
     const petal1Ref = useRef<HTMLDivElement>(null);
     const petal2Ref = useRef<HTMLDivElement>(null);
     const petal3Ref = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 1024);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
 
     useEffect(() => {
         const petals = [
@@ -40,7 +48,6 @@ export default function LateralScroll() {
             { ref: petal2Ref, x: 70,  y: 80,  rot: 28, dur: 7  },
             { ref: petal3Ref, x: 100, y: 70,  rot: 18, dur: 13 },
         ];
-
         petals.forEach(({ ref, x, y, rot, dur }) => {
             if (!ref.current) return;
             gsap.to(ref.current, {
@@ -56,14 +63,18 @@ export default function LateralScroll() {
     }, []);
 
     useGSAP(() => {
+        if (isMobile) {
+            // Mata todos los ScrollTriggers de este scope
+            ScrollTrigger.getAll().forEach(st => st.kill());
+            return;
+        }
+
         const pinContainer = pinContainerRef.current;
         const cardsTrack = cardsTrackRef.current;
         if (!pinContainer || !cardsTrack) return;
 
         requestAnimationFrame(() => {
-            // Lee UNA sola vez
             const scrollAmount = cardsTrack.scrollWidth - window.innerWidth;
-
             gsap.to(cardsTrack, {
                 x: -scrollAmount,
                 ease: "none",
@@ -77,31 +88,58 @@ export default function LateralScroll() {
                 }
             });
         });
-    }, { scope: pinContainerRef });
+    }, { scope: pinContainerRef, dependencies: [isMobile] });
 
+    // ── MOBILE / TABLET: versión estática ──
+    if (isMobile) {
+        return (
+            <section className={styles.mobileSection} id="features">
+                <div className={styles.mobileDarkHeader}>
+                    <h2 className={styles.mainTitle}>
+                        <span className={styles.blueText}>THE 309T</span><br />
+                        STANDARD
+                    </h2>
+                </div>
+                <div className={styles.mobileCardsContainer}>
+                    {CARDS.map((card, index) => (
+                        <div key={index} className={styles.card}>
+                            <div className={styles.cardIcon}>
+                                <div className={styles.iconRelativeContainer}>
+                                    <Image src={card.icon} alt={card.title} fill className={styles.iconImage} />
+                                </div>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <h3 className={styles.cardTitle}>{card.title}</h3>
+                                <p>{card.desc}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
+    // ── DESKTOP: versión con GSAP horizontal scroll ──
     return (
         <section ref={pinContainerRef} className={styles.pinContainer} id="features">
-            {/* 30% SUPERIOR: Header Oscuro */}
             <div className={styles.darkHeader}>
                 <div className={styles.headerContent}>
                     <h2 className={styles.mainTitle}>
-                        <span className={styles.blueText}>309T</span><br />
-                        FEATURES
+                        <span className={styles.blueText}>THE 309T</span><br />
+                        STANDARD
                     </h2>
                 </div>
-                {/* Elemento decorativo flor */}
                 <div ref={petal1Ref} className={styles.flowerWrapperOne}>
-                    <Image src="/petal-1.webp" alt="" fill sizes="(max-width: 768px) 0px, 400px" className={styles.petalOneImg} loading="lazy"/>
+                    <Image src="/petal-1.webp" alt="" fill sizes="400px" className={styles.petalOneImg} loading="lazy"/>
                 </div>
                 <div ref={petal2Ref} className={styles.flowerWrapperTwo}>
-                    <Image src="/petal-2.webp" alt="" fill sizes="(max-width: 768px) 0px, 200px" className={styles.petalTwoImg} loading="lazy"/>
+                    <Image src="/petal-2.webp" alt="" fill sizes="200px" className={styles.petalTwoImg} loading="lazy"/>
                 </div>
                 <div ref={petal3Ref} className={styles.flowerWrapperThree}>
-                    <Image src="/petal-1.webp" alt="" fill sizes="(max-width: 768px) 0px, 400px" className={styles.petalThreeImg} loading="lazy"/>
+                    <Image src="/petal-1.webp" alt="" fill sizes="400px" className={styles.petalThreeImg} loading="lazy"/>
                 </div>
             </div>
 
-            {/* 70% INFERIOR: Area de Cards */}
             <div className={styles.cardsSection}>
                 <div ref={cardsTrackRef} className={styles.cardsTrack}>
                     {CARDS.map((card, index) => (
