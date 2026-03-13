@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f85e5b-1d2c-4d1d-ab13-08f05b8a3ecd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/WaitlistModal/WaitlistModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/WaitlistModal/WaitlistModal.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -303,3 +303,58 @@
     from { transform: translateX(120%) scale(0.9); opacity: 0; }
     to { transform: translateX(0) scale(1); opacity: 1; }
 }
+
+/* TABLET */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .toastContainer {
+        width: 420px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .toastContainer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 92vh;
+        z-index: 10000;
+        animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modalContent {
+        border-radius: 24px 24px 0 0;
+        max-height: 92vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .form {
+        padding: 20px 16px;
+        gap: 10px;
+    }
+
+    .row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .input, .textarea, .dropdownTrigger {
+        font-size: 16px; /* evita zoom en iOS al hacer focus */
+        padding: 10px 14px;
+    }
+
+    .submitBtn {
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
